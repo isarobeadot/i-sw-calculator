@@ -78,6 +78,7 @@ public class MainView extends javax.swing.JFrame implements ViewInterface {
 
         jtfMain.setEditable(false);
         jtfMain.setColumns(20);
+        jtfMain.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         javax.swing.GroupLayout jpTopLayout = new javax.swing.GroupLayout(jpTop);
         jpTop.setLayout(jpTopLayout);

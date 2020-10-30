@@ -77,6 +77,7 @@ public class Controller implements java.awt.event.ActionListener, java.awt.event
     }
 
     private void doCommand(String action) {
+        String top = v.getTopText();
         String op = v.getOpText();
         String main = v.getMainText();
         switch (action) {
@@ -92,6 +93,9 @@ public class Controller implements java.awt.event.ActionListener, java.awt.event
             case B9:
                 if (main.equals("0")) {
                     main = "";
+                }
+                if (main.equals("-0")) {
+                    main = "-";
                 }
                 v.setMainText(main + action);
                 equalPressed = false;
@@ -124,10 +128,21 @@ public class Controller implements java.awt.event.ActionListener, java.awt.event
                 break;
 
             case BACKSPACE:
-                if (main.length() > 1) {
+                int limit = main.contains("-") ? 2 : 1;
+                if (main.length() > limit) {
                     v.setMainText(main.substring(0, main.length() - 1));
-                } else if (main.length() == 1) {
-                    v.setMainText("0");
+                } else if (main.length() == limit) {
+                    if (!top.equals("") && !op.equals("")) {
+                        v.setTopText("");
+                        v.setOpText("");
+                        v.setMainText(top);
+                    } else {
+                        v.setMainText("0");
+                    }
+                }
+                main = v.getMainText();
+                if (main.substring(main.length() - 1).equals(".")) {
+                    v.setMainText(main.substring(0, main.length() - 1));
                 }
                 break;
             case QUIT:
