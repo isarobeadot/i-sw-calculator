@@ -61,6 +61,7 @@ public class MainView extends javax.swing.JFrame implements ViewInterface {
         jbQuit = new javax.swing.JButton();
         jbAns = new javax.swing.JButton();
         jbClean = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFocusable(false);
@@ -298,18 +299,22 @@ public class MainView extends javax.swing.JFrame implements ViewInterface {
         jbClean.setText("Clean");
         jbClean.setFocusable(false);
 
+        jLabel1.setText("v1.1");
+
         javax.swing.GroupLayout jpBottomLayout = new javax.swing.GroupLayout(jpBottom);
         jpBottom.setLayout(jpBottomLayout);
         jpBottomLayout.setHorizontalGroup(
             jpBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpBottomLayout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jbQuit)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbAns)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbClean)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jpBottomLayout.setVerticalGroup(
             jpBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -318,7 +323,8 @@ public class MainView extends javax.swing.JFrame implements ViewInterface {
                 .addGroup(jpBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbQuit)
                     .addComponent(jbAns)
-                    .addComponent(jbClean))
+                    .addComponent(jbClean)
+                    .addComponent(jLabel1))
                 .addContainerGap())
         );
 
@@ -466,6 +472,7 @@ public class MainView extends javax.swing.JFrame implements ViewInterface {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton jb0;
     private javax.swing.JButton jb1;
     private javax.swing.JButton jb2;
