@@ -8,12 +8,12 @@ import inaki.sw.calc.view.IMainView;
 /**
  *
  * @author inaki
- * @version 1.1
+ * @version 1.1.1
  * @since 1.0
  */
 public class MainView extends javax.swing.JFrame implements IMainView {
 
-    private  Controller c;
+    private Controller c;
 
     /**
      * Creates new form MainView

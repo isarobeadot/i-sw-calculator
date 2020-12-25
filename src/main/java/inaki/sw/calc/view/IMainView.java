@@ -5,7 +5,7 @@ import inaki.sw.calc.Controller;
 /**
  *
  * @author inaki
- * @version 1.1
+ * @version 1.1.1
  * @since 1.0
  */
 public interface IMainView {
