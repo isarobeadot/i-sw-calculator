@@ -1,44 +1,44 @@
 package inaki.sw.calc;
 
-import inaki.sw.calc.view.ViewInterface;
-import static inaki.sw.calc.view.ViewInterface.ADD;
-import static inaki.sw.calc.view.ViewInterface.ANS;
-import static inaki.sw.calc.view.ViewInterface.B0;
-import static inaki.sw.calc.view.ViewInterface.B1;
-import static inaki.sw.calc.view.ViewInterface.B2;
-import static inaki.sw.calc.view.ViewInterface.B3;
-import static inaki.sw.calc.view.ViewInterface.B4;
-import static inaki.sw.calc.view.ViewInterface.B5;
-import static inaki.sw.calc.view.ViewInterface.B6;
-import static inaki.sw.calc.view.ViewInterface.B7;
-import static inaki.sw.calc.view.ViewInterface.B8;
-import static inaki.sw.calc.view.ViewInterface.B9;
-import static inaki.sw.calc.view.ViewInterface.BACKSPACE;
-import static inaki.sw.calc.view.ViewInterface.CLEAN;
-import static inaki.sw.calc.view.ViewInterface.DIVIDE;
-import static inaki.sw.calc.view.ViewInterface.DOT;
-import static inaki.sw.calc.view.ViewInterface.EQUAL;
-import static inaki.sw.calc.view.ViewInterface.MULTIPLY;
-import static inaki.sw.calc.view.ViewInterface.PLUS_MINUS;
-import static inaki.sw.calc.view.ViewInterface.POW;
-import static inaki.sw.calc.view.ViewInterface.QUIT;
-import static inaki.sw.calc.view.ViewInterface.SUBSTRACT;
+import static inaki.sw.calc.view.IMainView.ADD;
+import static inaki.sw.calc.view.IMainView.ANS;
+import static inaki.sw.calc.view.IMainView.B0;
+import static inaki.sw.calc.view.IMainView.B1;
+import static inaki.sw.calc.view.IMainView.B2;
+import static inaki.sw.calc.view.IMainView.B3;
+import static inaki.sw.calc.view.IMainView.B4;
+import static inaki.sw.calc.view.IMainView.B5;
+import static inaki.sw.calc.view.IMainView.B6;
+import static inaki.sw.calc.view.IMainView.B7;
+import static inaki.sw.calc.view.IMainView.B8;
+import static inaki.sw.calc.view.IMainView.B9;
+import static inaki.sw.calc.view.IMainView.BACKSPACE;
+import static inaki.sw.calc.view.IMainView.CLEAN;
+import static inaki.sw.calc.view.IMainView.DIVIDE;
+import static inaki.sw.calc.view.IMainView.DOT;
+import static inaki.sw.calc.view.IMainView.EQUAL;
+import static inaki.sw.calc.view.IMainView.MULTIPLY;
+import static inaki.sw.calc.view.IMainView.PLUS_MINUS;
+import static inaki.sw.calc.view.IMainView.POW;
+import static inaki.sw.calc.view.IMainView.QUIT;
+import static inaki.sw.calc.view.IMainView.SUBSTRACT;
 import inaki.sw.calc.view.swing.MainView;
 import static java.awt.event.KeyEvent.VK_BACK_SPACE;
 import static java.lang.Double.parseDouble;
 import static java.lang.Math.pow;
 import static java.lang.System.exit;
 import static java.util.Locale.ENGLISH;
+import inaki.sw.calc.view.IMainView;
 
 /**
  *
  * @author inaki
- * @version 1.0.2
+ * @version 1.1
  * @since 1.0
  */
 public class Controller implements java.awt.event.ActionListener, java.awt.event.KeyListener {
 
-    private final ViewInterface v;
+    private final IMainView v;
     private double ans = 0.0d;
     private boolean equalPressed = false;
 

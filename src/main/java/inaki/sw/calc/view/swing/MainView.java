@@ -1,17 +1,17 @@
 package inaki.sw.calc.view.swing;
 
 import inaki.sw.calc.Controller;
-import inaki.sw.calc.view.ViewInterface;
 import static javax.swing.SwingUtilities.updateComponentTreeUI;
 import static javax.swing.UIManager.setLookAndFeel;
+import inaki.sw.calc.view.IMainView;
 
 /**
  *
  * @author inaki
- * @version 1.0.2
+ * @version 1.1
  * @since 1.0
  */
-public class MainView extends javax.swing.JFrame implements ViewInterface {
+public class MainView extends javax.swing.JFrame implements IMainView {
 
     private  Controller c;
 
@@ -65,7 +65,7 @@ public class MainView extends javax.swing.JFrame implements ViewInterface {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFocusable(false);
-        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/icon/isw-calc-96.png")).getImage());
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/inaki/sw/calc/icon/isw-calc-96.png")).getImage());
 
         jpTop.setFocusable(false);
 
@@ -299,7 +299,7 @@ public class MainView extends javax.swing.JFrame implements ViewInterface {
         jbClean.setText("Clean");
         jbClean.setFocusable(false);
 
-        jLabel1.setText("v1.1");
+        jLabel1.setText("1.1");
 
         javax.swing.GroupLayout jpBottomLayout = new javax.swing.GroupLayout(jpBottom);
         jpBottom.setLayout(jpBottomLayout);

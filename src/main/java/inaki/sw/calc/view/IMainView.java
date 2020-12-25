@@ -5,10 +5,10 @@ import inaki.sw.calc.Controller;
 /**
  *
  * @author inaki
- * @version 1.0.2
+ * @version 1.1
  * @since 1.0
  */
-public interface ViewInterface {
+public interface IMainView {
 
     /* NUMBERS */
     public final static String B0 = "0";
