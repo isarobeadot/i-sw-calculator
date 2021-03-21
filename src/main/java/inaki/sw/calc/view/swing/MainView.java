@@ -299,7 +299,7 @@ public class MainView extends javax.swing.JFrame implements IMainView {
         jbClean.setText("Clean");
         jbClean.setFocusable(false);
 
-        jLabel1.setText("1.1");
+        jLabel1.setText("1.1.2");
 
         javax.swing.GroupLayout jpBottomLayout = new javax.swing.GroupLayout(jpBottom);
         jpBottom.setLayout(jpBottomLayout);
