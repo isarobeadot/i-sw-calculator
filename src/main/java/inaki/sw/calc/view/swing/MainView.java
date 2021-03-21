@@ -1,9 +1,9 @@
 package inaki.sw.calc.view.swing;
 
 import inaki.sw.calc.Controller;
+import inaki.sw.calc.view.IMainView;
 import static javax.swing.SwingUtilities.updateComponentTreeUI;
 import static javax.swing.UIManager.setLookAndFeel;
-import inaki.sw.calc.view.IMainView;
 
 /**
  *

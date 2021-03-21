@@ -1,5 +1,6 @@
 package inaki.sw.calc;
 
+import inaki.sw.calc.view.IMainView;
 import static inaki.sw.calc.view.IMainView.ADD;
 import static inaki.sw.calc.view.IMainView.ANS;
 import static inaki.sw.calc.view.IMainView.B0;
@@ -28,7 +29,6 @@ import static java.lang.Double.parseDouble;
 import static java.lang.Math.pow;
 import static java.lang.System.exit;
 import static java.util.Locale.ENGLISH;
-import inaki.sw.calc.view.IMainView;
 
 /**
  *
@@ -138,6 +138,7 @@ public class Controller implements java.awt.event.ActionListener, java.awt.event
                         v.setMainText(top);
                     } else {
                         v.setMainText("0");
+                        equalPressed = !v.getTopText().isEmpty();
                     }
                 }
                 main = v.getMainText();
