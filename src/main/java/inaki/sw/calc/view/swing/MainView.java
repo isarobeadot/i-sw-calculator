@@ -49,12 +49,12 @@ public class MainView extends javax.swing.JFrame implements IMainView {
         jb0 = new javax.swing.JButton();
         jbDot = new javax.swing.JButton();
         jpMainRight = new javax.swing.JPanel();
-        jbSubstract = new javax.swing.JButton();
-        jbAdd = new javax.swing.JButton();
         jbDivide = new javax.swing.JButton();
         jbMultiply = new javax.swing.JButton();
         jbPlusMinus = new javax.swing.JButton();
         jbPow = new javax.swing.JButton();
+        jbAdd = new javax.swing.JButton();
+        jbSubstract = new javax.swing.JButton();
         jbEqual = new javax.swing.JButton();
         jbBackSpace = new javax.swing.JButton();
         jpBottom = new javax.swing.JPanel();
@@ -212,12 +212,6 @@ public class MainView extends javax.swing.JFrame implements IMainView {
 
         jpMainRight.setFocusable(false);
 
-        jbSubstract.setText("-");
-        jbSubstract.setFocusable(false);
-
-        jbAdd.setText("+");
-        jbAdd.setFocusable(false);
-
         jbDivide.setText("/");
         jbDivide.setFocusable(false);
 
@@ -230,6 +224,12 @@ public class MainView extends javax.swing.JFrame implements IMainView {
         jbPow.setText("^");
         jbPow.setFocusable(false);
 
+        jbAdd.setText("+");
+        jbAdd.setFocusable(false);
+
+        jbSubstract.setText("-");
+        jbSubstract.setFocusable(false);
+
         jbEqual.setText("=");
         jbEqual.setFocusable(false);
 
@@ -240,45 +240,46 @@ public class MainView extends javax.swing.JFrame implements IMainView {
         jpMainRight.setLayout(jpMainRightLayout);
         jpMainRightLayout.setHorizontalGroup(
             jpMainRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpMainRightLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpMainRightLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jpMainRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpMainRightLayout.createSequentialGroup()
-                        .addComponent(jbAdd)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jbSubstract))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpMainRightLayout.createSequentialGroup()
-                        .addComponent(jbMultiply)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jbDivide))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpMainRightLayout.createSequentialGroup()
+                .addGroup(jpMainRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jpMainRightLayout.createSequentialGroup()
                         .addComponent(jbPow)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jbPlusMinus))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpMainRightLayout.createSequentialGroup()
-                        .addComponent(jbBackSpace)
+                    .addGroup(jpMainRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpMainRightLayout.createSequentialGroup()
+                            .addComponent(jbMultiply)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jbDivide))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpMainRightLayout.createSequentialGroup()
+                            .addComponent(jbBackSpace)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jbEqual)))
+                    .addGroup(jpMainRightLayout.createSequentialGroup()
+                        .addComponent(jbAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jbEqual)))
+                        .addComponent(jbSubstract, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        jpMainRightLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jbAdd, jbBackSpace, jbDivide, jbEqual, jbMultiply, jbPlusMinus, jbPow, jbSubstract});
+        jpMainRightLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jbBackSpace, jbDivide, jbEqual, jbMultiply, jbPlusMinus, jbPow});
 
         jpMainRightLayout.setVerticalGroup(
             jpMainRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpMainRightLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jpMainRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbSubstract)
-                    .addComponent(jbAdd))
+                    .addComponent(jbPow)
+                    .addComponent(jbPlusMinus))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpMainRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbDivide)
                     .addComponent(jbMultiply))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpMainRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbPlusMinus)
-                    .addComponent(jbPow))
+                    .addComponent(jbAdd)
+                    .addComponent(jbSubstract))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpMainRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbEqual)
@@ -286,7 +287,7 @@ public class MainView extends javax.swing.JFrame implements IMainView {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jpMainRightLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jbAdd, jbBackSpace, jbDivide, jbEqual, jbMultiply, jbPlusMinus, jbPow, jbSubstract});
+        jpMainRightLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jbBackSpace, jbDivide, jbEqual, jbMultiply, jbPlusMinus, jbPow});
 
         jpBottom.setFocusable(false);
 
@@ -299,7 +300,7 @@ public class MainView extends javax.swing.JFrame implements IMainView {
         jbClean.setText("Clean");
         jbClean.setFocusable(false);
 
-        jLabel1.setText("1.1.2");
+        jLabel1.setText("1.2");
 
         javax.swing.GroupLayout jpBottomLayout = new javax.swing.GroupLayout(jpBottom);
         jpBottom.setLayout(jpBottomLayout);
