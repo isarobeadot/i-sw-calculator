@@ -1,6 +1,6 @@
 package inaki.sw.calc.view;
 
-import inaki.sw.calc.Controller;
+import inaki.sw.calc.controller.Controller;
 
 /**
  *

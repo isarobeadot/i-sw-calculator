@@ -1,4 +1,4 @@
-package inaki.sw.calc;
+package inaki.sw.calc.controller;
 
 import inaki.sw.calc.view.IMainView;
 import static inaki.sw.calc.view.IMainView.ADD;
@@ -60,7 +60,7 @@ public class Controller implements java.awt.event.ActionListener, java.awt.event
         this.vChecker = new VChecker("isw-calc", this.version);
     }
 
-    void startController() {
+    public void startController() {
         v.setController(this);
         vChecker.setActionlistener(this);
 

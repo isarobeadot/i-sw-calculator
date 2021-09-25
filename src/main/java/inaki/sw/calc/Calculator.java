@@ -1,5 +1,7 @@
 package inaki.sw.calc;
 
+import inaki.sw.calc.controller.Controller;
+
 /**
  *
  * @author inaki
