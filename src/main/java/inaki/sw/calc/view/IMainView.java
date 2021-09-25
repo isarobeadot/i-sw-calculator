@@ -56,4 +56,6 @@ public interface IMainView {
 
     public void setAnsEnabled(boolean b);
 
+    public void setVersion(String version);
+
 }

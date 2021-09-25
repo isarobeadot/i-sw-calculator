@@ -61,7 +61,7 @@ public class MainView extends javax.swing.JFrame implements IMainView {
         jbQuit = new javax.swing.JButton();
         jbAns = new javax.swing.JButton();
         jbClean = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jlVersion = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFocusable(false);
@@ -300,7 +300,7 @@ public class MainView extends javax.swing.JFrame implements IMainView {
         jbClean.setText("Clean");
         jbClean.setFocusable(false);
 
-        jLabel1.setText("1.2");
+        jlVersion.setText("?");
 
         javax.swing.GroupLayout jpBottomLayout = new javax.swing.GroupLayout(jpBottom);
         jpBottom.setLayout(jpBottomLayout);
@@ -308,7 +308,7 @@ public class MainView extends javax.swing.JFrame implements IMainView {
             jpBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpBottomLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(jlVersion)
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jbQuit)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -325,7 +325,7 @@ public class MainView extends javax.swing.JFrame implements IMainView {
                     .addComponent(jbQuit)
                     .addComponent(jbAns)
                     .addComponent(jbClean)
-                    .addComponent(jLabel1))
+                    .addComponent(jlVersion))
                 .addContainerGap())
         );
 
@@ -473,7 +473,6 @@ public class MainView extends javax.swing.JFrame implements IMainView {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton jb0;
     private javax.swing.JButton jb1;
     private javax.swing.JButton jb2;
@@ -497,6 +496,7 @@ public class MainView extends javax.swing.JFrame implements IMainView {
     private javax.swing.JButton jbPow;
     private javax.swing.JButton jbQuit;
     private javax.swing.JButton jbSubstract;
+    private javax.swing.JLabel jlVersion;
     private javax.swing.JPanel jpBottom;
     private javax.swing.JPanel jpMainLeft;
     private javax.swing.JPanel jpMainRight;
@@ -505,4 +505,14 @@ public class MainView extends javax.swing.JFrame implements IMainView {
     private javax.swing.JTextField jtfOp;
     private javax.swing.JTextField jtfTop;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void setVersion(String version) {
+        if (version == null) {
+            this.jlVersion.setVisible(false);
+        } else {
+            this.jlVersion.setVisible(true);
+            this.jlVersion.setText(version);
+        }
+    }
 }

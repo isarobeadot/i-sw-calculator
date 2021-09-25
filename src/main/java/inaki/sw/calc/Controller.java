@@ -24,11 +24,17 @@ import static inaki.sw.calc.view.IMainView.POW;
 import static inaki.sw.calc.view.IMainView.QUIT;
 import static inaki.sw.calc.view.IMainView.SUBSTRACT;
 import inaki.sw.calc.view.swing.MainView;
+import inaki.sw.lib.utils.VChecker;
+import static inaki.sw.lib.utils.VChecker.VC_VERSION_AVAILABLE;
+import java.awt.Desktop;
 import static java.awt.event.KeyEvent.VK_BACK_SPACE;
+import java.io.IOException;
 import static java.lang.Double.parseDouble;
 import static java.lang.Math.pow;
 import static java.lang.System.exit;
+import java.net.URI;
 import static java.util.Locale.ENGLISH;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,20 +45,33 @@ import static java.util.Locale.ENGLISH;
 public class Controller implements java.awt.event.ActionListener, java.awt.event.KeyListener {
 
     private final IMainView v;
+    private final String version = this.getClass().getPackage().getImplementationVersion();
     private double ans = 0.0d;
     private boolean equalPressed = false;
+
+    private final VChecker vChecker;
+    private Thread vCheckerThread;
 
     /**
      * @since 1.0
      */
     public Controller() {
         this.v = new MainView();
+        this.vChecker = new VChecker("isw-calc", this.version);
     }
 
     void startController() {
         v.setController(this);
+        vChecker.setActionlistener(this);
+
         v.startView();
         v.setAnsEnabled(false);
+        v.setVersion(this.version);
+
+        if (this.version != null) {
+            vCheckerThread = new Thread(vChecker);
+            vCheckerThread.start();
+        }
     }
 
     @Override
@@ -77,6 +96,7 @@ public class Controller implements java.awt.event.ActionListener, java.awt.event
     }
 
     private void doCommand(String action) {
+        System.out.println("action: " + action);
         String top = v.getTopText();
         String op = v.getOpText();
         String main = v.getMainText();
@@ -156,6 +176,19 @@ public class Controller implements java.awt.event.ActionListener, java.awt.event
             case CLEAN:
                 v.clean();
                 this.equalPressed = false;
+                break;
+            case VC_VERSION_AVAILABLE:
+                final int option = JOptionPane.showConfirmDialog(null, "<html><p>There is a newer version available.</p>"
+                        + "<p>Do you want to download it?</p></html>", "New version", JOptionPane.YES_NO_OPTION);
+                if (option == 0) {
+                    // YES
+                    try {
+                        Desktop.getDesktop().browse(URI.create("https://inaki-sw.xyz/web/downloads"));
+                    }
+                    catch (IOException ex) {
+                        JOptionPane.showMessageDialog(null, "An error occurred", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
                 break;
             default:
                 break;
