@@ -50,7 +50,6 @@ public class Controller implements java.awt.event.ActionListener, java.awt.event
     private boolean equalPressed = false;
 
     private final VChecker vChecker;
-    private Thread vCheckerThread;
 
     /**
      * @since 1.0
@@ -69,7 +68,7 @@ public class Controller implements java.awt.event.ActionListener, java.awt.event
         v.setVersion(this.version);
 
         if (this.version != null) {
-            vCheckerThread = new Thread(vChecker);
+            Thread vCheckerThread = new Thread(vChecker);
             vCheckerThread.start();
         }
     }
@@ -86,6 +85,7 @@ public class Controller implements java.awt.event.ActionListener, java.awt.event
 
     @Override
     public void keyPressed(java.awt.event.KeyEvent e) {
+        // empty
     }
 
     @Override
@@ -174,7 +174,7 @@ public class Controller implements java.awt.event.ActionListener, java.awt.event
                 equalPressed = true;
                 break;
             case CLEAN:
-                v.clean();
+                v.clear();
                 this.equalPressed = false;
                 break;
             case VC_VERSION_AVAILABLE:
@@ -184,8 +184,7 @@ public class Controller implements java.awt.event.ActionListener, java.awt.event
                     // YES
                     try {
                         Desktop.getDesktop().browse(URI.create("https://inaki-sw.xyz/web/downloads#isw-calc"));
-                    }
-                    catch (IOException ex) {
+                    } catch (IOException ex) {
                         JOptionPane.showMessageDialog(null, "An error occurred", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }
@@ -228,7 +227,7 @@ public class Controller implements java.awt.event.ActionListener, java.awt.event
                 this.ans = parseDouble(main);
                 break;
         }
-        v.clean();
+        v.clear();
         v.setTopText(this.ans + "");
         v.setAnsEnabled(true);
         equalPressed = true;

@@ -11,36 +11,36 @@ import inaki.sw.calc.controller.Controller;
 public interface IMainView {
 
     /* NUMBERS */
-    public final static String B0 = "0";
-    public final static String B1 = "1";
-    public final static String B2 = "2";
-    public final static String B3 = "3";
-    public final static String B4 = "4";
-    public final static String B5 = "5";
-    public final static String B6 = "6";
-    public final static String B7 = "7";
-    public final static String B8 = "8";
-    public final static String B9 = "9";
-    public final static String DOT = ".";
+    public static final String B0 = "0";
+    public static final String B1 = "1";
+    public static final String B2 = "2";
+    public static final String B3 = "3";
+    public static final String B4 = "4";
+    public static final String B5 = "5";
+    public static final String B6 = "6";
+    public static final String B7 = "7";
+    public static final String B8 = "8";
+    public static final String B9 = "9";
+    public static final String DOT = ".";
     /* OPERATORS */
-    public final static String ADD = "+";
-    public final static String SUBSTRACT = "-";
-    public final static String MULTIPLY = "*";
-    public final static String DIVIDE = "/";
-    public final static String POW = "^";
-    public final static String PLUS_MINUS = "P";
-    public final static String BACKSPACE = "B";
-    public final static String EQUAL = "=";
+    public static final String ADD = "+";
+    public static final String SUBSTRACT = "-";
+    public static final String MULTIPLY = "*";
+    public static final String DIVIDE = "/";
+    public static final String POW = "^";
+    public static final String PLUS_MINUS = "P";
+    public static final String BACKSPACE = "B";
+    public static final String EQUAL = "=";
     /* ACTIONS */
-    public final static String QUIT = "Q";
-    public final static String ANS = "A";
-    public final static String CLEAN = "C";
+    public static final String QUIT = "Q";
+    public static final String ANS = "A";
+    public static final String CLEAN = "C";
 
     public void setController(Controller c);
 
     public void startView();
 
-    public void clean();
+    public void clear();
 
     public String getTopText();
 

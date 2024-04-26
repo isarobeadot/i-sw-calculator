@@ -13,8 +13,6 @@ import static javax.swing.UIManager.setLookAndFeel;
  */
 public class MainView extends javax.swing.JFrame implements IMainView {
 
-    private Controller c;
-
     /**
      * Creates new form MainView
      */
@@ -360,56 +358,55 @@ public class MainView extends javax.swing.JFrame implements IMainView {
 
     @Override
     public void setController(Controller c) {
-        this.c = c;
-        jtfMain.addActionListener(this.c);
-        jtfMain.addKeyListener(this.c);
+        jtfMain.addActionListener(c);
+        jtfMain.addKeyListener(c);
         jtfMain.setActionCommand(EQUAL);
         /* NUMBERS */
-        jb0.addActionListener(this.c);
+        jb0.addActionListener(c);
         jb0.setActionCommand(B0);
-        jb1.addActionListener(this.c);
+        jb1.addActionListener(c);
         jb1.setActionCommand(B1);
-        jb2.addActionListener(this.c);
+        jb2.addActionListener(c);
         jb2.setActionCommand(B2);
-        jb3.addActionListener(this.c);
+        jb3.addActionListener(c);
         jb3.setActionCommand(B3);
-        jb4.addActionListener(this.c);
+        jb4.addActionListener(c);
         jb4.setActionCommand(B4);
-        jb5.addActionListener(this.c);
+        jb5.addActionListener(c);
         jb5.setActionCommand(B5);
-        jb6.addActionListener(this.c);
+        jb6.addActionListener(c);
         jb6.setActionCommand(B6);
-        jb7.addActionListener(this.c);
+        jb7.addActionListener(c);
         jb7.setActionCommand(B7);
-        jb8.addActionListener(this.c);
+        jb8.addActionListener(c);
         jb8.setActionCommand(B8);
-        jb9.addActionListener(this.c);
+        jb9.addActionListener(c);
         jb9.setActionCommand(B9);
-        jbDot.addActionListener(this.c);
+        jbDot.addActionListener(c);
         jbDot.setActionCommand(DOT);
         /* OPERATORS */
-        jbAdd.addActionListener(this.c);
+        jbAdd.addActionListener(c);
         jbAdd.setActionCommand(ADD);
-        jbSubstract.addActionListener(this.c);
+        jbSubstract.addActionListener(c);
         jbSubstract.setActionCommand(SUBSTRACT);
-        jbMultiply.addActionListener(this.c);
+        jbMultiply.addActionListener(c);
         jbMultiply.setActionCommand(MULTIPLY);
-        jbDivide.addActionListener(this.c);
+        jbDivide.addActionListener(c);
         jbDivide.setActionCommand(DIVIDE);
-        jbPow.addActionListener(this.c);
+        jbPow.addActionListener(c);
         jbPow.setActionCommand(POW);
-        jbPlusMinus.addActionListener(this.c);
+        jbPlusMinus.addActionListener(c);
         jbPlusMinus.setActionCommand(PLUS_MINUS);
-        jbBackSpace.addActionListener(this.c);
+        jbBackSpace.addActionListener(c);
         jbBackSpace.setActionCommand(BACKSPACE);
-        jbEqual.addActionListener(this.c);
+        jbEqual.addActionListener(c);
         jbEqual.setActionCommand(EQUAL);
         /* ACTIONS */
-        jbQuit.addActionListener(this.c);
+        jbQuit.addActionListener(c);
         jbQuit.setActionCommand(QUIT);
-        jbAns.addActionListener(this.c);
+        jbAns.addActionListener(c);
         jbAns.setActionCommand(ANS);
-        jbClean.addActionListener(this.c);
+        jbClean.addActionListener(c);
         jbClean.setActionCommand(CLEAN);
     }
 
@@ -421,17 +418,18 @@ public class MainView extends javax.swing.JFrame implements IMainView {
             updateComponentTreeUI(this);
             this.repaint();
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+            // empty
         } finally {
             this.pack();
         }
         //</editor-fold>
 
-        this.clean();
+        this.clear();
         this.setVisible(true);
     }
 
     @Override
-    public void clean() {
+    public void clear() {
         jtfTop.setText("");
         jtfOp.setText("");
         jtfMain.setText(B0);
