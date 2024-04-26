@@ -183,7 +183,7 @@ public class Controller implements java.awt.event.ActionListener, java.awt.event
                 if (option == 0) {
                     // YES
                     try {
-                        Desktop.getDesktop().browse(URI.create("https://inaki-sw.xyz/web/downloads"));
+                        Desktop.getDesktop().browse(URI.create("https://inaki-sw.xyz/web/downloads#isw-calc"));
                     }
                     catch (IOException ex) {
                         JOptionPane.showMessageDialog(null, "An error occurred", "Error", JOptionPane.ERROR_MESSAGE);
