@@ -2,8 +2,8 @@ package inaki.sw.calc.view.swing;
 
 import inaki.sw.calc.controller.Controller;
 import inaki.sw.calc.view.IMainView;
-import static javax.swing.SwingUtilities.updateComponentTreeUI;
-import static javax.swing.UIManager.setLookAndFeel;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 
 /**
  *
@@ -33,51 +33,50 @@ public class MainView extends javax.swing.JFrame implements IMainView {
         jtfTop = new javax.swing.JTextField();
         jtfOp = new javax.swing.JTextField();
         jtfMain = new javax.swing.JTextField();
-        jpMainLeft = new javax.swing.JPanel();
+        jpMain = new javax.swing.JPanel();
         jb7 = new javax.swing.JButton();
         jb8 = new javax.swing.JButton();
         jb9 = new javax.swing.JButton();
+        jbPow = new javax.swing.JButton();
+        jbPlusMinus = new javax.swing.JButton();
         jb4 = new javax.swing.JButton();
         jb5 = new javax.swing.JButton();
         jb6 = new javax.swing.JButton();
+        jbMultiply = new javax.swing.JButton();
+        jbDivide = new javax.swing.JButton();
         jb1 = new javax.swing.JButton();
         jb2 = new javax.swing.JButton();
         jb3 = new javax.swing.JButton();
+        jbAdd = new javax.swing.JButton();
+        jbSubstract = new javax.swing.JButton();
         jbEmpty = new javax.swing.JButton();
         jb0 = new javax.swing.JButton();
         jbDot = new javax.swing.JButton();
-        jpMainRight = new javax.swing.JPanel();
-        jbDivide = new javax.swing.JButton();
-        jbMultiply = new javax.swing.JButton();
-        jbPlusMinus = new javax.swing.JButton();
-        jbPow = new javax.swing.JButton();
-        jbAdd = new javax.swing.JButton();
-        jbSubstract = new javax.swing.JButton();
-        jbEqual = new javax.swing.JButton();
         jbBackSpace = new javax.swing.JButton();
+        jbEqual = new javax.swing.JButton();
         jpBottom = new javax.swing.JPanel();
+        jlVersion = new javax.swing.JLabel();
         jbQuit = new javax.swing.JButton();
         jbAns = new javax.swing.JButton();
         jbClean = new javax.swing.JButton();
-        jlVersion = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setFocusable(false);
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/inaki/sw/calc/icon/isw-calc-96.png")).getImage());
 
-        jpTop.setFocusable(false);
-
         jtfTop.setEditable(false);
-        jtfTop.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jtfTop.setBackground(new java.awt.Color(255, 255, 255));
         jtfTop.setFocusable(false);
+        jtfTop.setPreferredSize(new java.awt.Dimension(64, 40));
 
         jtfOp.setEditable(false);
+        jtfOp.setBackground(new java.awt.Color(170, 255, 170));
         jtfOp.setColumns(1);
         jtfOp.setFocusable(false);
 
         jtfMain.setEditable(false);
-        jtfMain.setColumns(20);
-        jtfMain.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jtfMain.setBackground(new java.awt.Color(255, 255, 255));
+        jtfMain.setFocusable(false);
+        jtfMain.setPreferredSize(new java.awt.Dimension(64, 40));
 
         javax.swing.GroupLayout jpTopLayout = new javax.swing.GroupLayout(jpTop);
         jpTop.setLayout(jpTopLayout);
@@ -86,243 +85,198 @@ public class MainView extends javax.swing.JFrame implements IMainView {
             .addGroup(jpTopLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jpTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jtfMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jpTopLayout.createSequentialGroup()
-                        .addComponent(jtfTop)
+                        .addComponent(jtfTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtfOp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jtfMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jtfOp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jpTopLayout.setVerticalGroup(
             jpTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpTopLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jpTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jpTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jtfTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfOp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfOp, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jtfMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jpMainLeft.setFocusable(false);
-
-        jb7.setText("7");
-        jb7.setFocusable(false);
-
-        jb8.setText("8");
-        jb8.setFocusable(false);
-
-        jb9.setText("9");
-        jb9.setFocusable(false);
-
-        jb4.setText("4");
-        jb4.setFocusable(false);
-
-        jb5.setText("5");
-        jb5.setFocusable(false);
-
-        jb6.setText("6");
-        jb6.setFocusable(false);
-
-        jb1.setText("1");
-        jb1.setFocusable(false);
-
-        jb2.setText("2");
-        jb2.setFocusable(false);
-
-        jb3.setText("3");
-        jb3.setFocusable(false);
-
-        jbEmpty.setText(" ");
-        jbEmpty.setEnabled(false);
-        jbEmpty.setFocusable(false);
-
-        jb0.setText("0");
-        jb0.setFocusable(false);
-
-        jbDot.setText(".");
-        jbDot.setFocusable(false);
-
-        javax.swing.GroupLayout jpMainLeftLayout = new javax.swing.GroupLayout(jpMainLeft);
-        jpMainLeft.setLayout(jpMainLeftLayout);
-        jpMainLeftLayout.setHorizontalGroup(
-            jpMainLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpMainLeftLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jpMainLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpMainLeftLayout.createSequentialGroup()
-                        .addComponent(jb7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jb8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jb9))
-                    .addGroup(jpMainLeftLayout.createSequentialGroup()
-                        .addComponent(jb4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jb5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jb6))
-                    .addGroup(jpMainLeftLayout.createSequentialGroup()
-                        .addComponent(jb1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jb2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jb3))
-                    .addGroup(jpMainLeftLayout.createSequentialGroup()
-                        .addComponent(jbEmpty)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jb0)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jbDot)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jpMainLeftLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jb0, jb1, jb2, jb3, jb4, jb5, jb6, jb7, jb8, jb9, jbDot, jbEmpty});
-
-        jpMainLeftLayout.setVerticalGroup(
-            jpMainLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpMainLeftLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jpMainLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jb7)
-                    .addComponent(jb8)
-                    .addComponent(jb9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpMainLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jb4)
-                    .addComponent(jb5)
-                    .addComponent(jb6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpMainLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jb1)
-                    .addComponent(jb2)
-                    .addComponent(jb3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpMainLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbEmpty)
-                    .addComponent(jb0)
-                    .addComponent(jbDot))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jpMainLeftLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jb0, jb1, jb2, jb3, jb4, jb5, jb6, jb7, jb8, jb9, jbDot, jbEmpty});
-
-        jpMainRight.setFocusable(false);
-
-        jbDivide.setText("/");
-        jbDivide.setFocusable(false);
-
-        jbMultiply.setText("*");
-        jbMultiply.setFocusable(false);
-
-        jbPlusMinus.setText("+/-");
-        jbPlusMinus.setFocusable(false);
-
-        jbPow.setText("^");
-        jbPow.setFocusable(false);
-
-        jbAdd.setText("+");
-        jbAdd.setFocusable(false);
-
-        jbSubstract.setText("-");
-        jbSubstract.setFocusable(false);
-
-        jbEqual.setText("=");
-        jbEqual.setFocusable(false);
-
-        jbBackSpace.setText("<-");
-        jbBackSpace.setFocusable(false);
-
-        javax.swing.GroupLayout jpMainRightLayout = new javax.swing.GroupLayout(jpMainRight);
-        jpMainRight.setLayout(jpMainRightLayout);
-        jpMainRightLayout.setHorizontalGroup(
-            jpMainRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpMainRightLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jpMainRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jpMainRightLayout.createSequentialGroup()
-                        .addComponent(jbPow)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbPlusMinus))
-                    .addGroup(jpMainRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpMainRightLayout.createSequentialGroup()
-                            .addComponent(jbMultiply)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jbDivide))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpMainRightLayout.createSequentialGroup()
-                            .addComponent(jbBackSpace)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jbEqual)))
-                    .addGroup(jpMainRightLayout.createSequentialGroup()
-                        .addComponent(jbAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jbSubstract, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        jpMainRightLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jbBackSpace, jbDivide, jbEqual, jbMultiply, jbPlusMinus, jbPow});
+        jpMain.setLayout(new java.awt.GridLayout(4, 0, 2, 2));
 
-        jpMainRightLayout.setVerticalGroup(
-            jpMainRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpMainRightLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jpMainRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbPow)
-                    .addComponent(jbPlusMinus))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpMainRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbDivide)
-                    .addComponent(jbMultiply))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpMainRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbAdd)
-                    .addComponent(jbSubstract))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpMainRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbEqual)
-                    .addComponent(jbBackSpace))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jb7.setBackground(new java.awt.Color(0, 136, 0));
+        jb7.setForeground(new java.awt.Color(255, 255, 255));
+        jb7.setText("<html><body><h1>7</h1></body></html>");
+        jb7.setBorderPainted(false);
+        jb7.setFocusable(false);
+        jpMain.add(jb7);
 
-        jpMainRightLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jbBackSpace, jbDivide, jbEqual, jbMultiply, jbPlusMinus, jbPow});
+        jb8.setBackground(new java.awt.Color(0, 136, 0));
+        jb8.setForeground(new java.awt.Color(255, 255, 255));
+        jb8.setText("<html><body><h1>8</h1></body></html>");
+        jb8.setBorderPainted(false);
+        jb8.setFocusable(false);
+        jpMain.add(jb8);
 
-        jpBottom.setFocusable(false);
+        jb9.setBackground(new java.awt.Color(0, 136, 0));
+        jb9.setForeground(new java.awt.Color(255, 255, 255));
+        jb9.setText("<html><body><h1>9</h1></body></html>");
+        jb9.setFocusable(false);
+        jpMain.add(jb9);
 
-        jbQuit.setText("Quit");
-        jbQuit.setFocusable(false);
+        jbPow.setBackground(new java.awt.Color(170, 255, 170));
+        jbPow.setText("<html><body><h1>X<sup>y</sup></h1></body></html>");
+        jbPow.setBorderPainted(false);
+        jbPow.setFocusable(false);
+        jpMain.add(jbPow);
 
-        jbAns.setText("Ans");
-        jbAns.setFocusable(false);
+        jbPlusMinus.setBackground(new java.awt.Color(170, 255, 170));
+        jbPlusMinus.setText("<html><body><h1>+/-</h1></body></html>");
+        jbPlusMinus.setBorderPainted(false);
+        jbPlusMinus.setFocusable(false);
+        jpMain.add(jbPlusMinus);
 
-        jbClean.setText("Clean");
-        jbClean.setFocusable(false);
+        jb4.setBackground(new java.awt.Color(0, 136, 0));
+        jb4.setForeground(new java.awt.Color(255, 255, 255));
+        jb4.setText("<html><body><h1>4</h1></body></html>");
+        jb4.setBorderPainted(false);
+        jb4.setFocusable(false);
+        jpMain.add(jb4);
 
-        jlVersion.setText("?");
+        jb5.setBackground(new java.awt.Color(0, 136, 0));
+        jb5.setForeground(new java.awt.Color(255, 255, 255));
+        jb5.setText("<html><body><h1>5</h1></body></html>");
+        jb5.setBorderPainted(false);
+        jb5.setFocusable(false);
+        jpMain.add(jb5);
+
+        jb6.setBackground(new java.awt.Color(0, 136, 0));
+        jb6.setForeground(new java.awt.Color(255, 255, 255));
+        jb6.setText("<html><body><h1>6</h1></body></html>");
+        jb6.setBorderPainted(false);
+        jb6.setFocusable(false);
+        jpMain.add(jb6);
+
+        jbMultiply.setBackground(new java.awt.Color(170, 255, 170));
+        jbMultiply.setText("<html><body><h1>&times;</h1></body></html>");
+        jbMultiply.setBorderPainted(false);
+        jbMultiply.setFocusable(false);
+        jpMain.add(jbMultiply);
+
+        jbDivide.setBackground(new java.awt.Color(170, 255, 170));
+        jbDivide.setText("<html><body><h1>&divide;</h1></body></html>");
+        jbDivide.setBorderPainted(false);
+        jbDivide.setFocusable(false);
+        jpMain.add(jbDivide);
+
+        jb1.setBackground(new java.awt.Color(0, 136, 0));
+        jb1.setForeground(new java.awt.Color(255, 255, 255));
+        jb1.setText("<html><body><h1>1</h1></body></html>");
+        jb1.setBorderPainted(false);
+        jb1.setFocusable(false);
+        jpMain.add(jb1);
+
+        jb2.setBackground(new java.awt.Color(0, 136, 0));
+        jb2.setForeground(new java.awt.Color(255, 255, 255));
+        jb2.setText("<html><body><h1>2</h1></body></html>");
+        jb2.setBorderPainted(false);
+        jb2.setFocusable(false);
+        jpMain.add(jb2);
+
+        jb3.setBackground(new java.awt.Color(0, 136, 0));
+        jb3.setForeground(new java.awt.Color(255, 255, 255));
+        jb3.setText("<html><body><h1>3</h1></body></html>");
+        jb3.setBorderPainted(false);
+        jb3.setFocusable(false);
+        jpMain.add(jb3);
+
+        jbAdd.setBackground(new java.awt.Color(170, 255, 170));
+        jbAdd.setText("<html><body><h1>+</h1></body></html>");
+        jbAdd.setBorderPainted(false);
+        jbAdd.setFocusable(false);
+        jpMain.add(jbAdd);
+
+        jbSubstract.setBackground(new java.awt.Color(170, 255, 170));
+        jbSubstract.setText("<html><body><h1>-</h1></body></html>");
+        jbSubstract.setBorderPainted(false);
+        jbSubstract.setFocusable(false);
+        jpMain.add(jbSubstract);
+
+        jbEmpty.setBackground(new java.awt.Color(0, 136, 0));
+        jbEmpty.setForeground(new java.awt.Color(255, 255, 255));
+        jbEmpty.setBorderPainted(false);
+        jbEmpty.setFocusable(false);
+        jpMain.add(jbEmpty);
+
+        jb0.setBackground(new java.awt.Color(0, 136, 0));
+        jb0.setForeground(new java.awt.Color(255, 255, 255));
+        jb0.setText("<html><body><h1>0</h1></body></html>");
+        jb0.setBorderPainted(false);
+        jb0.setFocusable(false);
+        jpMain.add(jb0);
+
+        jbDot.setBackground(new java.awt.Color(0, 136, 0));
+        jbDot.setForeground(new java.awt.Color(255, 255, 255));
+        jbDot.setText("<html><body><h1>.</h1></body></html>");
+        jbDot.setBorderPainted(false);
+        jbDot.setFocusable(false);
+        jpMain.add(jbDot);
+
+        jbBackSpace.setBackground(new java.awt.Color(170, 255, 170));
+        jbBackSpace.setText("<html><body><h1>&larr;</h1></body></html>");
+        jbBackSpace.setBorderPainted(false);
+        jbBackSpace.setFocusable(false);
+        jpMain.add(jbBackSpace);
+
+        jbEqual.setBackground(new java.awt.Color(170, 255, 170));
+        jbEqual.setText("<html><body><h1>=</h1></body></html>");
+        jbEqual.setBorderPainted(false);
+        jbEqual.setFocusable(false);
+        jpMain.add(jbEqual);
+
+        jpBottom.setBackground(new java.awt.Color(0, 136, 0));
+
+        jlVersion.setBackground(new java.awt.Color(0, 136, 0));
+        jlVersion.setForeground(new java.awt.Color(255, 255, 255));
+        jlVersion.setText("v");
+
+        jbQuit.setBackground(new java.awt.Color(170, 255, 170));
+        jbQuit.setText("<html><body><h2>Quit</h2></body></html>");
+        jbQuit.setBorderPainted(false);
+
+        jbAns.setBackground(new java.awt.Color(170, 255, 170));
+        jbAns.setText("<html><body><h2>Ans</h2></body></html>");
+        jbAns.setBorderPainted(false);
+
+        jbClean.setBackground(new java.awt.Color(170, 255, 170));
+        jbClean.setText("<html><body><h2>Clean</h2></body></html>");
+        jbClean.setBorderPainted(false);
 
         javax.swing.GroupLayout jpBottomLayout = new javax.swing.GroupLayout(jpBottom);
         jpBottom.setLayout(jpBottomLayout);
         jpBottomLayout.setHorizontalGroup(
             jpBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpBottomLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBottomLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jlVersion)
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addComponent(jbQuit)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbQuit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbAns)
+                .addComponent(jbAns, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbClean)
+                .addComponent(jbClean, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jpBottomLayout.setVerticalGroup(
             jpBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpBottomLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBottomLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jpBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbQuit)
-                    .addComponent(jbAns)
-                    .addComponent(jbClean)
+                    .addComponent(jbClean, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbAns, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbQuit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlVersion))
                 .addContainerGap())
         );
@@ -331,26 +285,18 @@ public class MainView extends javax.swing.JFrame implements IMainView {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jpTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jpMainLeft, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jpMainRight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jpBottom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jpTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpBottom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpMain, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jpTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jpMainLeft, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jpMainRight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jpMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpBottom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jpBottom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -414,10 +360,10 @@ public class MainView extends javax.swing.JFrame implements IMainView {
     public void startView() {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code ">
         try {
-            setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-            updateComponentTreeUI(this);
+            UIManager.setLookAndFeel(new com.formdev.flatlaf.FlatLightLaf());
+            SwingUtilities.updateComponentTreeUI(this);
             this.repaint();
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             // empty
         } finally {
             this.pack();
@@ -470,6 +416,16 @@ public class MainView extends javax.swing.JFrame implements IMainView {
         jbAns.setEnabled(b);
     }
 
+    @Override
+    public void setVersion(String version) {
+        if (version == null) {
+            this.jlVersion.setVisible(false);
+        } else {
+            this.jlVersion.setVisible(true);
+            this.jlVersion.setText(version);
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jb0;
     private javax.swing.JButton jb1;
@@ -496,21 +452,10 @@ public class MainView extends javax.swing.JFrame implements IMainView {
     private javax.swing.JButton jbSubstract;
     private javax.swing.JLabel jlVersion;
     private javax.swing.JPanel jpBottom;
-    private javax.swing.JPanel jpMainLeft;
-    private javax.swing.JPanel jpMainRight;
+    private javax.swing.JPanel jpMain;
     private javax.swing.JPanel jpTop;
     private javax.swing.JTextField jtfMain;
     private javax.swing.JTextField jtfOp;
     private javax.swing.JTextField jtfTop;
     // End of variables declaration//GEN-END:variables
-
-    @Override
-    public void setVersion(String version) {
-        if (version == null) {
-            this.jlVersion.setVisible(false);
-        } else {
-            this.jlVersion.setVisible(true);
-            this.jlVersion.setText(version);
-        }
-    }
 }
