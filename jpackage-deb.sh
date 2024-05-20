@@ -13,6 +13,7 @@ rm -rf target/test-classes
 
 jpackage --input target/ \
     --name "I-SW Calculator" \
+    --vendor "I-SW - I. Software" \
     --main-jar calculator-$version-jar-with-dependencies.jar \
     --main-class inaki.sw.calc.Calculator \
     --app-version $version \
