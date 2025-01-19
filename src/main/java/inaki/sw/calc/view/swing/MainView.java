@@ -65,16 +65,22 @@ public class MainView extends javax.swing.JFrame implements IMainView {
 
         jtfTop.setEditable(false);
         jtfTop.setBackground(new java.awt.Color(255, 255, 255));
+        jtfTop.setFont(new java.awt.Font("sansserif", 1, 15)); // NOI18N
+        jtfTop.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jtfTop.setFocusable(false);
         jtfTop.setPreferredSize(new java.awt.Dimension(64, 40));
 
         jtfOp.setEditable(false);
         jtfOp.setBackground(new java.awt.Color(170, 255, 170));
         jtfOp.setColumns(1);
+        jtfOp.setFont(new java.awt.Font("sansserif", 1, 15)); // NOI18N
+        jtfOp.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jtfOp.setFocusable(false);
 
         jtfMain.setEditable(false);
         jtfMain.setBackground(new java.awt.Color(255, 255, 255));
+        jtfMain.setFont(new java.awt.Font("sansserif", 1, 15)); // NOI18N
+        jtfMain.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jtfMain.setFocusable(false);
         jtfMain.setPreferredSize(new java.awt.Dimension(64, 40));
 
@@ -104,7 +110,7 @@ public class MainView extends javax.swing.JFrame implements IMainView {
                 .addContainerGap())
         );
 
-        jpMain.setLayout(new java.awt.GridLayout(4, 0, 2, 2));
+        jpMain.setLayout(new java.awt.GridLayout(4, 5, 2, 2));
 
         jb7.setBackground(new java.awt.Color(0, 136, 0));
         jb7.setForeground(new java.awt.Color(255, 255, 255));
