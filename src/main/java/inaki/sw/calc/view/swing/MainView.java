@@ -59,6 +59,9 @@ public class MainView extends javax.swing.JFrame implements IMainView {
         jbQuit = new javax.swing.JButton();
         jbAns = new javax.swing.JButton();
         jbClean = new javax.swing.JButton();
+        jmbMenu = new javax.swing.JMenuBar();
+        jmFile = new javax.swing.JMenu();
+        jmQuit = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/inaki/sw/calc/icon/isw-calc-96.png")).getImage());
@@ -287,6 +290,15 @@ public class MainView extends javax.swing.JFrame implements IMainView {
                 .addContainerGap())
         );
 
+        jmFile.setText("File");
+
+        jmQuit.setText("Quit");
+        jmFile.add(jmQuit);
+
+        jmbMenu.add(jmFile);
+
+        setJMenuBar(jmbMenu);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -354,6 +366,8 @@ public class MainView extends javax.swing.JFrame implements IMainView {
         jbEqual.addActionListener(c);
         jbEqual.setActionCommand(EQUAL);
         /* ACTIONS */
+        jmQuit.addActionListener(c);
+        jmQuit.setActionCommand(QUIT);
         jbQuit.addActionListener(c);
         jbQuit.setActionCommand(QUIT);
         jbAns.addActionListener(c);
@@ -457,6 +471,9 @@ public class MainView extends javax.swing.JFrame implements IMainView {
     private javax.swing.JButton jbQuit;
     private javax.swing.JButton jbSubstract;
     private javax.swing.JLabel jlVersion;
+    private javax.swing.JMenu jmFile;
+    private javax.swing.JMenuItem jmQuit;
+    private javax.swing.JMenuBar jmbMenu;
     private javax.swing.JPanel jpBottom;
     private javax.swing.JPanel jpMain;
     private javax.swing.JPanel jpTop;
