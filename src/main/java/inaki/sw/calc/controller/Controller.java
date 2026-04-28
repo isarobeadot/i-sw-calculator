@@ -1,29 +1,35 @@
 package inaki.sw.calc.controller;
 
 import inaki.sw.calc.view.IMainView;
-import static inaki.sw.calc.view.IMainView.ADD;
-import static inaki.sw.calc.view.IMainView.ANS;
-import static inaki.sw.calc.view.IMainView.B0;
-import static inaki.sw.calc.view.IMainView.B1;
-import static inaki.sw.calc.view.IMainView.B2;
-import static inaki.sw.calc.view.IMainView.B3;
-import static inaki.sw.calc.view.IMainView.B4;
-import static inaki.sw.calc.view.IMainView.B5;
-import static inaki.sw.calc.view.IMainView.B6;
-import static inaki.sw.calc.view.IMainView.B7;
-import static inaki.sw.calc.view.IMainView.B8;
-import static inaki.sw.calc.view.IMainView.B9;
-import static inaki.sw.calc.view.IMainView.BACKSPACE;
-import static inaki.sw.calc.view.IMainView.CLEAN;
-import static inaki.sw.calc.view.IMainView.DIVIDE;
-import static inaki.sw.calc.view.IMainView.DOT;
-import static inaki.sw.calc.view.IMainView.EQUAL;
-import static inaki.sw.calc.view.IMainView.MULTIPLY;
-import static inaki.sw.calc.view.IMainView.PLUS_MINUS;
-import static inaki.sw.calc.view.IMainView.POW;
-import static inaki.sw.calc.view.IMainView.QUIT;
-import static inaki.sw.calc.view.IMainView.SUBSTRACT;
+import static inaki.sw.calc.view.IMainView.MV_ADD;
+import static inaki.sw.calc.view.IMainView.MV_ANS;
+import static inaki.sw.calc.view.IMainView.MV_B0;
+import static inaki.sw.calc.view.IMainView.MV_B1;
+import static inaki.sw.calc.view.IMainView.MV_B2;
+import static inaki.sw.calc.view.IMainView.MV_B3;
+import static inaki.sw.calc.view.IMainView.MV_B4;
+import static inaki.sw.calc.view.IMainView.MV_B5;
+import static inaki.sw.calc.view.IMainView.MV_B6;
+import static inaki.sw.calc.view.IMainView.MV_B7;
+import static inaki.sw.calc.view.IMainView.MV_B8;
+import static inaki.sw.calc.view.IMainView.MV_B9;
+import static inaki.sw.calc.view.IMainView.MV_BACKSPACE;
+import static inaki.sw.calc.view.IMainView.MV_CLEAN;
+import static inaki.sw.calc.view.IMainView.MV_DIVIDE;
+import static inaki.sw.calc.view.IMainView.MV_DOT;
+import static inaki.sw.calc.view.IMainView.MV_EQUAL;
+import static inaki.sw.calc.view.IMainView.MV_MENU_PREFERENCES;
+import static inaki.sw.calc.view.IMainView.MV_MENU_QUIT;
+import static inaki.sw.calc.view.IMainView.MV_MULTIPLY;
+import static inaki.sw.calc.view.IMainView.MV_PLUS_MINUS;
+import static inaki.sw.calc.view.IMainView.MV_POW;
+import static inaki.sw.calc.view.IMainView.MV_QUIT;
+import static inaki.sw.calc.view.IMainView.MV_SUBSTRACT;
+import inaki.sw.calc.view.IPreferencesView;
+import static inaki.sw.calc.view.IPreferencesView.PV_CANCEL;
+import static inaki.sw.calc.view.IPreferencesView.PV_OK;
 import inaki.sw.calc.view.swing.MainView;
+import inaki.sw.calc.view.swing.PreferencesView;
 import inaki.sw.lib.utils.VChecker;
 import static inaki.sw.lib.utils.VChecker.VC_VERSION_AVAILABLE;
 import java.awt.Desktop;
@@ -44,7 +50,8 @@ import javax.swing.JOptionPane;
  */
 public class Controller implements java.awt.event.ActionListener, java.awt.event.KeyListener {
 
-    private final IMainView v;
+    private final IMainView mv;
+    private final IPreferencesView pv;
     private final String version = this.getClass().getPackage().getImplementationVersion();
     private double ans = 0.0d;
     private boolean equalPressed = false;
@@ -52,20 +59,22 @@ public class Controller implements java.awt.event.ActionListener, java.awt.event
     private final VChecker vChecker;
 
     /**
-     * @since 1.0
+     * @since 1.06
      */
     public Controller() {
-        this.v = new MainView();
+        this.mv = new MainView();
+        this.pv = new PreferencesView((MainView) mv, false);
         this.vChecker = new VChecker("isw-calc", this.version);
     }
 
     public void startController() {
-        v.setController(this);
+        mv.setController(this);
+        pv.setController(this);
         vChecker.setActionlistener(this);
 
-        v.startView();
-        v.setAnsEnabled(false);
-        v.setVersion(this.version);
+        mv.startView();
+        mv.setAnsEnabled(false);
+        mv.setVersion(this.version);
 
         if (this.version != null) {
             Thread vCheckerThread = new Thread(vChecker);
@@ -91,93 +100,77 @@ public class Controller implements java.awt.event.ActionListener, java.awt.event
     @Override
     public void keyReleased(java.awt.event.KeyEvent e) {
         if (e.getKeyCode() == VK_BACK_SPACE) {
-            doCommand(BACKSPACE);
+            doCommand(MV_BACKSPACE);
         }
     }
 
     private void doCommand(String action) {
-        System.out.println("action: " + action);
-        String top = v.getTopText();
-        String op = v.getOpText();
-        String main = v.getMainText();
+        System.out.println("Action: " + action);
+        String top = mv.getTopText();
+        String op = mv.getOpText();
+        String main = mv.getMainText();
         switch (action) {
-            case B0:
-            case B1:
-            case B2:
-            case B3:
-            case B4:
-            case B5:
-            case B6:
-            case B7:
-            case B8:
-            case B9:
+            case MV_B0, MV_B1, MV_B2, MV_B3, MV_B4, MV_B5, MV_B6, MV_B7, MV_B8, MV_B9 -> {
                 if (main.equals("0")) {
                     main = "";
                 }
                 if (main.equals("-0")) {
                     main = "-";
                 }
-                v.setMainText(main + action);
+                mv.setMainText(main + action);
                 equalPressed = false;
-                break;
-            case DOT:
+            }
+            case MV_DOT -> {
                 if (!main.contains(".")) {
-                    v.setMainText(main + action);
+                    mv.setMainText(main + action);
                 }
-                break;
-            case ADD:
-            case SUBSTRACT:
-            case MULTIPLY:
-            case DIVIDE:
-            case POW:
+            }
+            case MV_ADD, MV_SUBSTRACT, MV_MULTIPLY, MV_DIVIDE, MV_POW -> {
                 if (!equalPressed) {
                     doEqual(op, main);
                 }
-                v.setOpText(action);
+                mv.setOpText(action);
                 equalPressed = false;
-                break;
-            case EQUAL:
+            }
+            case MV_EQUAL ->
                 doEqual(op, main);
-                break;
-            case PLUS_MINUS:
+            case MV_PLUS_MINUS -> {
                 if (main.charAt(0) == '-') {
-                    v.setMainText(main.replace("-", ""));
+                    mv.setMainText(main.replace("-", ""));
                 } else {
-                    v.setMainText("-" + main);
+                    mv.setMainText("-" + main);
                 }
-                break;
-
-            case BACKSPACE:
+            }
+            case MV_BACKSPACE -> {
                 int limit = main.contains("-") ? 2 : 1;
                 if (main.length() > limit) {
-                    v.setMainText(main.substring(0, main.length() - 1));
+                    mv.setMainText(main.substring(0, main.length() - 1));
                 } else if (main.length() == limit) {
                     if (!top.equals("") && !op.equals("")) {
-                        v.setTopText("");
-                        v.setOpText("");
-                        v.setMainText(top);
+                        mv.setTopText("");
+                        mv.setOpText("");
+                        mv.setMainText(top);
                     } else {
-                        v.setMainText("0");
-                        equalPressed = !v.getTopText().isEmpty();
+                        mv.setMainText("0");
+                        equalPressed = !mv.getTopText().isEmpty();
                     }
                 }
-                main = v.getMainText();
+                main = mv.getMainText();
                 if (main.substring(main.length() - 1).equals(".")) {
-                    v.setMainText(main.substring(0, main.length() - 1));
+                    mv.setMainText(main.substring(0, main.length() - 1));
                 }
-                break;
-            case QUIT:
+            }
+            case MV_MENU_QUIT, MV_QUIT ->
                 exit(0);
-                break;
-            case ANS:
-                v.setTopText(this.ans + "");
+            case MV_ANS -> {
+                mv.setTopText(this.ans + "");
                 equalPressed = true;
-                break;
-            case CLEAN:
-                v.clear();
+            }
+            case MV_CLEAN -> {
+                mv.clear();
                 this.equalPressed = false;
-                break;
-            case VC_VERSION_AVAILABLE:
+            }
+            case VC_VERSION_AVAILABLE -> {
                 final int option = JOptionPane.showConfirmDialog(null, "<html><p>There is a newer version available.</p>"
                         + "<p>Do you want to download it?</p></html>", "New version", JOptionPane.YES_NO_OPTION);
                 if (option == 0) {
@@ -188,9 +181,15 @@ public class Controller implements java.awt.event.ActionListener, java.awt.event
                         JOptionPane.showMessageDialog(null, "An error occurred", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }
-                break;
-            default:
-                break;
+            }
+            case MV_MENU_PREFERENCES ->
+                pv.startView();
+            case PV_OK ->
+                pv.close();
+            case PV_CANCEL ->
+                pv.close();
+            default ->
+                System.err.println("Action " + action + " not supported.");
         }
     }
 
@@ -198,38 +197,37 @@ public class Controller implements java.awt.event.ActionListener, java.awt.event
         double d1;
         double d2;
         switch (op) {
-            case ADD:
+            case MV_ADD -> {
                 d1 = this.ans;
                 d2 = parseDouble(main);
                 this.ans = d1 + d2;
-                break;
-            case SUBSTRACT:
+            }
+            case MV_SUBSTRACT -> {
                 d1 = this.ans;
                 d2 = parseDouble(main);
                 this.ans = d1 - d2;
-                break;
-            case MULTIPLY:
+            }
+            case MV_MULTIPLY -> {
                 d1 = this.ans;
                 d2 = parseDouble(main);
                 this.ans = d1 * d2;
-                break;
-            case DIVIDE:
+            }
+            case MV_DIVIDE -> {
                 d1 = this.ans;
                 d2 = parseDouble(main);
                 this.ans = d1 / d2;
-                break;
-            case POW:
+            }
+            case MV_POW -> {
                 d1 = this.ans;
                 d2 = parseDouble(main);
                 this.ans = pow(d1, d2);
-                break;
-            default:
+            }
+            default ->
                 this.ans = parseDouble(main);
-                break;
         }
-        v.clear();
-        v.setTopText(this.ans + "");
-        v.setAnsEnabled(true);
+        mv.clear();
+        mv.setTopText(this.ans + "");
+        mv.setAnsEnabled(true);
         equalPressed = true;
     }
 }

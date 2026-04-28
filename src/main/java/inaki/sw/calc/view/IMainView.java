@@ -11,30 +11,33 @@ import inaki.sw.calc.controller.Controller;
 public interface IMainView {
 
     /* NUMBERS */
-    public static final String B0 = "0";
-    public static final String B1 = "1";
-    public static final String B2 = "2";
-    public static final String B3 = "3";
-    public static final String B4 = "4";
-    public static final String B5 = "5";
-    public static final String B6 = "6";
-    public static final String B7 = "7";
-    public static final String B8 = "8";
-    public static final String B9 = "9";
-    public static final String DOT = ".";
+    public static final String MV_B0 = "0";
+    public static final String MV_B1 = "1";
+    public static final String MV_B2 = "2";
+    public static final String MV_B3 = "3";
+    public static final String MV_B4 = "4";
+    public static final String MV_B5 = "5";
+    public static final String MV_B6 = "6";
+    public static final String MV_B7 = "7";
+    public static final String MV_B8 = "8";
+    public static final String MV_B9 = "9";
+    public static final String MV_DOT = ".";
     /* OPERATORS */
-    public static final String ADD = "+";
-    public static final String SUBSTRACT = "-";
-    public static final String MULTIPLY = "*";
-    public static final String DIVIDE = "/";
-    public static final String POW = "^";
-    public static final String PLUS_MINUS = "P";
-    public static final String BACKSPACE = "B";
-    public static final String EQUAL = "=";
+    public static final String MV_ADD = "+";
+    public static final String MV_SUBSTRACT = "-";
+    public static final String MV_MULTIPLY = "*";
+    public static final String MV_DIVIDE = "/";
+    public static final String MV_POW = "^";
+    public static final String MV_PLUS_MINUS = "P";
+    public static final String MV_BACKSPACE = "B";
+    public static final String MV_EQUAL = "=";
+    /* MENU */
+    public static final String MV_MENU_PREFERENCES = "MP";
+    public static final String MV_MENU_QUIT = "MQ";
     /* ACTIONS */
-    public static final String QUIT = "Q";
-    public static final String ANS = "A";
-    public static final String CLEAN = "C";
+    public static final String MV_QUIT = "Q";
+    public static final String MV_ANS = "A";
+    public static final String MV_CLEAN = "C";
 
     public void setController(Controller c);
 

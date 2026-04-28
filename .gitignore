@@ -1,1 +1,5 @@
 /.attach_pid22897
+*.msi
+*.exe
+*.deb
+*.rpm

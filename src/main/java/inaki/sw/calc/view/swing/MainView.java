@@ -61,9 +61,12 @@ public class MainView extends javax.swing.JFrame implements IMainView {
         jbClean = new javax.swing.JButton();
         jmbMenu = new javax.swing.JMenuBar();
         jmFile = new javax.swing.JMenu();
+        jmPreferences = new javax.swing.JMenuItem();
+        js1 = new javax.swing.JPopupMenu.Separator();
         jmQuit = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("ISW Calculator");
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/inaki/sw/calc/icon/isw-calc-96.png")).getImage());
 
         jtfTop.setEditable(false);
@@ -292,6 +295,10 @@ public class MainView extends javax.swing.JFrame implements IMainView {
 
         jmFile.setText("File");
 
+        jmPreferences.setText("Preferences");
+        jmFile.add(jmPreferences);
+        jmFile.add(js1);
+
         jmQuit.setText("Quit");
         jmFile.add(jmQuit);
 
@@ -324,56 +331,59 @@ public class MainView extends javax.swing.JFrame implements IMainView {
     public void setController(Controller c) {
         jtfMain.addActionListener(c);
         jtfMain.addKeyListener(c);
-        jtfMain.setActionCommand(EQUAL);
+        jtfMain.setActionCommand(MV_EQUAL);
         /* NUMBERS */
         jb0.addActionListener(c);
-        jb0.setActionCommand(B0);
+        jb0.setActionCommand(MV_B0);
         jb1.addActionListener(c);
-        jb1.setActionCommand(B1);
+        jb1.setActionCommand(MV_B1);
         jb2.addActionListener(c);
-        jb2.setActionCommand(B2);
+        jb2.setActionCommand(MV_B2);
         jb3.addActionListener(c);
-        jb3.setActionCommand(B3);
+        jb3.setActionCommand(MV_B3);
         jb4.addActionListener(c);
-        jb4.setActionCommand(B4);
+        jb4.setActionCommand(MV_B4);
         jb5.addActionListener(c);
-        jb5.setActionCommand(B5);
+        jb5.setActionCommand(MV_B5);
         jb6.addActionListener(c);
-        jb6.setActionCommand(B6);
+        jb6.setActionCommand(MV_B6);
         jb7.addActionListener(c);
-        jb7.setActionCommand(B7);
+        jb7.setActionCommand(MV_B7);
         jb8.addActionListener(c);
-        jb8.setActionCommand(B8);
+        jb8.setActionCommand(MV_B8);
         jb9.addActionListener(c);
-        jb9.setActionCommand(B9);
+        jb9.setActionCommand(MV_B9);
         jbDot.addActionListener(c);
-        jbDot.setActionCommand(DOT);
+        jbDot.setActionCommand(MV_DOT);
         /* OPERATORS */
         jbAdd.addActionListener(c);
-        jbAdd.setActionCommand(ADD);
+        jbAdd.setActionCommand(MV_ADD);
         jbSubstract.addActionListener(c);
-        jbSubstract.setActionCommand(SUBSTRACT);
+        jbSubstract.setActionCommand(MV_SUBSTRACT);
         jbMultiply.addActionListener(c);
-        jbMultiply.setActionCommand(MULTIPLY);
+        jbMultiply.setActionCommand(MV_MULTIPLY);
         jbDivide.addActionListener(c);
-        jbDivide.setActionCommand(DIVIDE);
+        jbDivide.setActionCommand(MV_DIVIDE);
         jbPow.addActionListener(c);
-        jbPow.setActionCommand(POW);
+        jbPow.setActionCommand(MV_POW);
         jbPlusMinus.addActionListener(c);
-        jbPlusMinus.setActionCommand(PLUS_MINUS);
+        jbPlusMinus.setActionCommand(MV_PLUS_MINUS);
         jbBackSpace.addActionListener(c);
-        jbBackSpace.setActionCommand(BACKSPACE);
+        jbBackSpace.setActionCommand(MV_BACKSPACE);
         jbEqual.addActionListener(c);
-        jbEqual.setActionCommand(EQUAL);
-        /* ACTIONS */
+        jbEqual.setActionCommand(MV_EQUAL);
+        /* MENU BAR */
+        jmPreferences.addActionListener(c);
+        jmPreferences.setActionCommand(MV_MENU_PREFERENCES);
         jmQuit.addActionListener(c);
-        jmQuit.setActionCommand(QUIT);
+        jmQuit.setActionCommand(MV_MENU_QUIT);
+        /* ACTIONS */
         jbQuit.addActionListener(c);
-        jbQuit.setActionCommand(QUIT);
+        jbQuit.setActionCommand(MV_QUIT);
         jbAns.addActionListener(c);
-        jbAns.setActionCommand(ANS);
+        jbAns.setActionCommand(MV_ANS);
         jbClean.addActionListener(c);
-        jbClean.setActionCommand(CLEAN);
+        jbClean.setActionCommand(MV_CLEAN);
     }
 
     @Override
@@ -381,6 +391,7 @@ public class MainView extends javax.swing.JFrame implements IMainView {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code ">
         try {
             UIManager.setLookAndFeel(new com.formdev.flatlaf.FlatLightLaf());
+            UIManager.put("Button.arc", 20); // Rounded buttons
             SwingUtilities.updateComponentTreeUI(this);
             this.repaint();
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
@@ -398,7 +409,7 @@ public class MainView extends javax.swing.JFrame implements IMainView {
     public void clear() {
         jtfTop.setText("");
         jtfOp.setText("");
-        jtfMain.setText(B0);
+        jtfMain.setText(MV_B0);
     }
 
     @Override
@@ -472,11 +483,13 @@ public class MainView extends javax.swing.JFrame implements IMainView {
     private javax.swing.JButton jbSubstract;
     private javax.swing.JLabel jlVersion;
     private javax.swing.JMenu jmFile;
+    private javax.swing.JMenuItem jmPreferences;
     private javax.swing.JMenuItem jmQuit;
     private javax.swing.JMenuBar jmbMenu;
     private javax.swing.JPanel jpBottom;
     private javax.swing.JPanel jpMain;
     private javax.swing.JPanel jpTop;
+    private javax.swing.JPopupMenu.Separator js1;
     private javax.swing.JTextField jtfMain;
     private javax.swing.JTextField jtfOp;
     private javax.swing.JTextField jtfTop;
