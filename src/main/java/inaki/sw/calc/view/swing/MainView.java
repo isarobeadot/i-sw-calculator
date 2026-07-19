@@ -391,7 +391,9 @@ public class MainView extends javax.swing.JFrame implements IMainView {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code ">
         try {
             UIManager.setLookAndFeel(new com.formdev.flatlaf.FlatLightLaf());
+            // https://www.formdev.com/flatlaf/customizing/
             UIManager.put("Button.arc", 20); // Rounded buttons
+            UIManager.put("Component.arrowType", "triangle");
             SwingUtilities.updateComponentTreeUI(this);
             this.repaint();
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
