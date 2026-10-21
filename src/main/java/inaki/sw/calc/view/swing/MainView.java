@@ -1,14 +1,15 @@
 package inaki.sw.calc.view.swing;
 
 import inaki.sw.calc.controller.Controller;
+import inaki.sw.calc.i18n.I18nService;
 import inaki.sw.calc.view.IMainView;
+import java.text.DecimalFormatSymbols;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
 /**
  *
  * @author inaki
- * @version 1.1.1
  * @since 1.0
  */
 public class MainView extends javax.swing.JFrame implements IMainView {
@@ -58,7 +59,7 @@ public class MainView extends javax.swing.JFrame implements IMainView {
         jlVersion = new javax.swing.JLabel();
         jbQuit = new javax.swing.JButton();
         jbAns = new javax.swing.JButton();
-        jbClean = new javax.swing.JButton();
+        jbClear = new javax.swing.JButton();
         jmbMenu = new javax.swing.JMenuBar();
         jmFile = new javax.swing.JMenu();
         jmPreferences = new javax.swing.JMenuItem();
@@ -66,7 +67,7 @@ public class MainView extends javax.swing.JFrame implements IMainView {
         jmQuit = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("ISW Calculator");
+        setTitle(I18nService.getMessage("app_name", ""));
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/inaki/sw/calc/icon/isw-calc-96.png")).getImage());
 
         jtfTop.setEditable(false);
@@ -262,9 +263,9 @@ public class MainView extends javax.swing.JFrame implements IMainView {
         jbAns.setText("<html><body><h2>Ans</h2></body></html>");
         jbAns.setBorderPainted(false);
 
-        jbClean.setBackground(new java.awt.Color(170, 255, 170));
-        jbClean.setText("<html><body><h2>Clean</h2></body></html>");
-        jbClean.setBorderPainted(false);
+        jbClear.setBackground(new java.awt.Color(170, 255, 170));
+        jbClear.setText("<html><body><h2>Clear</h2></body></html>");
+        jbClear.setBorderPainted(false);
 
         javax.swing.GroupLayout jpBottomLayout = new javax.swing.GroupLayout(jpBottom);
         jpBottom.setLayout(jpBottomLayout);
@@ -278,7 +279,7 @@ public class MainView extends javax.swing.JFrame implements IMainView {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbAns, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbClean, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbClear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jpBottomLayout.setVerticalGroup(
@@ -286,7 +287,7 @@ public class MainView extends javax.swing.JFrame implements IMainView {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBottomLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jpBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbClean, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbClear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbAns, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbQuit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlVersion))
@@ -382,8 +383,8 @@ public class MainView extends javax.swing.JFrame implements IMainView {
         jbQuit.setActionCommand(MV_QUIT);
         jbAns.addActionListener(c);
         jbAns.setActionCommand(MV_ANS);
-        jbClean.addActionListener(c);
-        jbClean.setActionCommand(MV_CLEAN);
+        jbClear.addActionListener(c);
+        jbClear.setActionCommand(MV_CLEAN);
     }
 
     @Override
@@ -401,6 +402,16 @@ public class MainView extends javax.swing.JFrame implements IMainView {
         } finally {
             this.pack();
         }
+        //</editor-fold>
+
+        //<editor-fold defaultstate="collapsed" desc=" Custom I18n ">
+        this.jmFile.setText(I18nService.getMessage("file", ""));
+        this.jmPreferences.setText(I18nService.getMessage("preferences", ""));
+        this.jmQuit.setText(I18nService.getMessage("quit", ""));
+        this.jbDot.setText("<html><body><h1>" + DecimalFormatSymbols.getInstance(I18nService.getBundle().getLocale()).getDecimalSeparator() + "</h1></body></html>");
+        this.jbQuit.setText("<html><body><h2>" + I18nService.getMessage("quit", "") + "</h2></body></html>");
+        this.jbAns.setText("<html><body><h2>" + I18nService.getMessage("ans", "") + "</h2></body></html>");
+        this.jbClear.setText("<html><body><h2>" + I18nService.getMessage("clear", "") + "</h2></body></html>");
         //</editor-fold>
 
         this.clear();
@@ -473,7 +484,7 @@ public class MainView extends javax.swing.JFrame implements IMainView {
     private javax.swing.JButton jbAdd;
     private javax.swing.JButton jbAns;
     private javax.swing.JButton jbBackSpace;
-    private javax.swing.JButton jbClean;
+    private javax.swing.JButton jbClear;
     private javax.swing.JButton jbDivide;
     private javax.swing.JButton jbDot;
     private javax.swing.JButton jbEmpty;

@@ -1,19 +1,16 @@
 package inaki.sw.calc.view;
 
-import inaki.sw.calc.controller.Controller;
-
 /**
  *
  * @author inaki
+ * @since 3.0
  */
-public interface IPreferencesView {
+public interface IPreferencesView extends IView {
 
     public static final String PV_OK = "PV_OK";
     public static final String PV_CANCEL = "PV_CANCEL";
 
-    public void setController(Controller c);
-
-    public void startView();
+    public String getSelectedLanguage();
 
     public void close();
 

@@ -1,5 +1,9 @@
 package inaki.sw.calc.controller;
 
+import inaki.sw.calc.i18n.CustomLocale;
+import inaki.sw.calc.i18n.I18nService;
+import inaki.sw.calc.preferences.Preferences;
+import inaki.sw.calc.preferences.PreferencesMgr;
 import inaki.sw.calc.view.IMainView;
 import static inaki.sw.calc.view.IMainView.MV_ADD;
 import static inaki.sw.calc.view.IMainView.MV_ANS;
@@ -39,29 +43,39 @@ import static java.lang.Double.parseDouble;
 import static java.lang.Math.pow;
 import static java.lang.System.exit;
 import java.net.URI;
+import java.util.Locale;
 import static java.util.Locale.ENGLISH;
+import java.util.logging.Logger;
+import static java.util.logging.Logger.getLogger;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author inaki
- * @version 1.1.1
  * @since 1.0
  */
 public class Controller implements java.awt.event.ActionListener, java.awt.event.KeyListener {
 
+    private static final Logger LOG = getLogger(Controller.class.getName());
+
     private final IMainView mv;
     private final IPreferencesView pv;
+
     private final String version = this.getClass().getPackage().getImplementationVersion();
+    private final Preferences settings;
+
     private double ans = 0.0d;
     private boolean equalPressed = false;
 
     private final VChecker vChecker;
 
-    /**
-     * @since 1.06
-     */
     public Controller() {
+        this.settings = PreferencesMgr.getSettings();
+
+        I18nService.setLocale(Locale.of(
+                this.settings.getLanguage() != null ? this.settings.getLanguage() : CustomLocale.ENGLISH.getKey()
+        ));
+
         this.mv = new MainView();
         this.pv = new PreferencesView((MainView) mv, false);
         this.vChecker = new VChecker("isw-calc", this.version);
@@ -105,7 +119,7 @@ public class Controller implements java.awt.event.ActionListener, java.awt.event
     }
 
     private void doCommand(String action) {
-        System.out.println("Action: " + action);
+        LOG.fine(() -> "Action: " + action);
         String top = mv.getTopText();
         String op = mv.getOpText();
         String main = mv.getMainText();
@@ -184,12 +198,18 @@ public class Controller implements java.awt.event.ActionListener, java.awt.event
             }
             case MV_MENU_PREFERENCES ->
                 pv.startView();
-            case PV_OK ->
+            case PV_OK -> {
+                String language = pv.getSelectedLanguage();
+                I18nService.setLocale(Locale.of(language));
+                this.settings.setLanguage(language);
+                PreferencesMgr.saveSettings(settings);
                 pv.close();
+                mv.startView();
+            }
             case PV_CANCEL ->
                 pv.close();
             default ->
-                System.err.println("Action " + action + " not supported.");
+                LOG.severe(() -> "Action " + action + " not supported.");
         }
     }
 

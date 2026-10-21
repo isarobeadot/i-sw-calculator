@@ -1,14 +1,11 @@
 package inaki.sw.calc.view;
 
-import inaki.sw.calc.controller.Controller;
-
 /**
  *
  * @author inaki
- * @version 1.1.1
  * @since 1.0
  */
-public interface IMainView {
+public interface IMainView extends IView {
 
     /* NUMBERS */
     public static final String MV_B0 = "0";
@@ -38,10 +35,6 @@ public interface IMainView {
     public static final String MV_QUIT = "Q";
     public static final String MV_ANS = "A";
     public static final String MV_CLEAN = "C";
-
-    public void setController(Controller c);
-
-    public void startView();
 
     public void clear();
 

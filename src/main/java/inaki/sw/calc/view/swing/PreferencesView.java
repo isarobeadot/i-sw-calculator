@@ -1,18 +1,24 @@
 package inaki.sw.calc.view.swing;
 
 import inaki.sw.calc.controller.Controller;
+import inaki.sw.calc.i18n.I18nService;
 import inaki.sw.calc.view.IPreferencesView;
+import inaki.sw.calc.view.swing.custom.CustomLocaleCellRenderer;
+import inaki.sw.calc.view.swing.custom.CustomLocaleComboBoxModel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
 /**
  *
  * @author inaki
+ * @since 3.0
  */
 public class PreferencesView extends javax.swing.JDialog implements IPreferencesView {
 
-    private final javax.swing.ComboBoxModel languageModel = new javax.swing.DefaultComboBoxModel(new String[]{"<html><body><h3>English</h3></body></html>"});
-    private final javax.swing.ComboBoxModel appearanceModel = new javax.swing.DefaultComboBoxModel(new String[]{"<html><body><h3>Green</h3></body></html>"});
+    private final CustomLocaleComboBoxModel languageModel = new CustomLocaleComboBoxModel();
+    private final javax.swing.ComboBoxModel<String> appearanceModel = new javax.swing.DefaultComboBoxModel<>(new String[]{
+        "<html><body><h3>" + I18nService.getMessage("theme_green", "") + "</h3></body></html>"
+    });
 
     /**
      * Creates new form PreferencesView
@@ -50,6 +56,7 @@ public class PreferencesView extends javax.swing.JDialog implements IPreferences
 
         jcbLanguage.setModel(languageModel);
         jcbLanguage.setFocusable(false);
+        jcbLanguage.setRenderer(new CustomLocaleCellRenderer());
 
         javax.swing.GroupLayout jpLanguageLayout = new javax.swing.GroupLayout(jpLanguage);
         jpLanguage.setLayout(jpLanguageLayout);
@@ -165,7 +172,20 @@ public class PreferencesView extends javax.swing.JDialog implements IPreferences
         }
         //</editor-fold>
 
+        //<editor-fold defaultstate="collapsed" desc=" Custom I18n ">
+        jpLanguage.setBorder(javax.swing.BorderFactory.createTitledBorder("<html><body><h2>" + I18nService.getMessage("language", "") + "</h2></body></html>"));
+        jcbLanguage.setSelectedItem(I18nService.getBundle().getLocale().getLanguage());
+        jpAppearance.setBorder(javax.swing.BorderFactory.createTitledBorder("<html><body><h2>" + I18nService.getMessage("appearance", "") + "</h2></body></html>"));
+        jbOK.setText("<html><body><h2>" + I18nService.getMessage("ok", "") + "</h2></body></html>");
+        jbCancel.setText("<html><body><h2>" + I18nService.getMessage("cancel", "") + "</h2></body></html>");
+        //</editor-fold>
+
         this.setVisible(true);
+    }
+
+    @Override
+    public String getSelectedLanguage() {
+        return (String) jcbLanguage.getSelectedItem();
     }
 
     @Override
