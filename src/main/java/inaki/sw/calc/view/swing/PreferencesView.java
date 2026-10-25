@@ -2,11 +2,12 @@ package inaki.sw.calc.view.swing;
 
 import inaki.sw.calc.controller.Controller;
 import inaki.sw.calc.i18n.I18nService;
+import inaki.sw.calc.lnf.LnFService;
 import inaki.sw.calc.view.IPreferencesView;
-import inaki.sw.calc.view.swing.custom.CustomLocaleCellRenderer;
+import inaki.sw.calc.view.swing.custom.CustomComboCellRenderer;
+import inaki.sw.calc.view.swing.custom.CustomLnFComboBoxModel;
 import inaki.sw.calc.view.swing.custom.CustomLocaleComboBoxModel;
 import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
 
 /**
  *
@@ -16,9 +17,7 @@ import javax.swing.UIManager;
 public class PreferencesView extends javax.swing.JDialog implements IPreferencesView {
 
     private final CustomLocaleComboBoxModel languageModel = new CustomLocaleComboBoxModel();
-    private final javax.swing.ComboBoxModel<String> appearanceModel = new javax.swing.DefaultComboBoxModel<>(new String[]{
-        "<html><body><h3>" + I18nService.getMessage("theme_green", "") + "</h3></body></html>"
-    });
+    private final CustomLnFComboBoxModel appearanceModel = new CustomLnFComboBoxModel();
 
     /**
      * Creates new form PreferencesView
@@ -51,12 +50,13 @@ public class PreferencesView extends javax.swing.JDialog implements IPreferences
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("ISW Calculator - Preferences");
 
-        jpLanguage.setBackground(new java.awt.Color(170, 255, 170));
+        jpLanguage.setBackground(LnFService.getLnF().getColorMainLight());
         jpLanguage.setBorder(javax.swing.BorderFactory.createTitledBorder("<html><body><h2>Language</h2></body></html>"));
 
+        jcbLanguage.setForeground(LnFService.getLnF().getColorTxtDark());
         jcbLanguage.setModel(languageModel);
         jcbLanguage.setFocusable(false);
-        jcbLanguage.setRenderer(new CustomLocaleCellRenderer());
+        jcbLanguage.setRenderer(new CustomComboCellRenderer());
 
         javax.swing.GroupLayout jpLanguageLayout = new javax.swing.GroupLayout(jpLanguage);
         jpLanguage.setLayout(jpLanguageLayout);
@@ -75,11 +75,13 @@ public class PreferencesView extends javax.swing.JDialog implements IPreferences
                 .addContainerGap())
         );
 
-        jpAppearance.setBackground(new java.awt.Color(170, 255, 170));
+        jpAppearance.setBackground(LnFService.getLnF().getColorMainLight());
         jpAppearance.setBorder(javax.swing.BorderFactory.createTitledBorder("<html><body><h2>Appearance</h2></body></html>"));
 
+        jcbAppearance.setForeground(LnFService.getLnF().getColorTxtDark());
         jcbAppearance.setModel(appearanceModel);
         jcbAppearance.setFocusable(false);
+        jcbAppearance.setRenderer(new CustomComboCellRenderer());
 
         javax.swing.GroupLayout jpAppearanceLayout = new javax.swing.GroupLayout(jpAppearance);
         jpAppearance.setLayout(jpAppearanceLayout);
@@ -98,13 +100,15 @@ public class PreferencesView extends javax.swing.JDialog implements IPreferences
                 .addContainerGap())
         );
 
-        jpBottom.setBackground(new java.awt.Color(0, 136, 0));
+        jpBottom.setBackground(LnFService.getLnF().getColorMainDark());
 
-        jbOK.setBackground(new java.awt.Color(170, 255, 170));
+        jbOK.setBackground(LnFService.getLnF().getColorMainLight());
+        jbOK.setForeground(LnFService.getLnF().getColorTxtDark());
         jbOK.setText("<html><body><h2>OK</h2></body></html>");
         jbOK.setBorderPainted(false);
 
-        jbCancel.setBackground(new java.awt.Color(170, 255, 170));
+        jbCancel.setBackground(LnFService.getLnF().getColorMainLight());
+        jbCancel.setForeground(LnFService.getLnF().getColorTxtDark());
         jbCancel.setText("<html><body><h2>Cancel</h2></body></html>");
         jbCancel.setBorderPainted(false);
 
@@ -161,31 +165,42 @@ public class PreferencesView extends javax.swing.JDialog implements IPreferences
     @Override
     public void startView() {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code ">
-        try {
-            UIManager.setLookAndFeel(new com.formdev.flatlaf.FlatLightLaf());
-            SwingUtilities.updateComponentTreeUI(this);
-            this.repaint();
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            // empty
-        } finally {
-            this.pack();
-        }
+        SwingUtilities.updateComponentTreeUI(this);
+        this.repaint();
+        this.pack();
         //</editor-fold>
 
         //<editor-fold defaultstate="collapsed" desc=" Custom I18n ">
         jpLanguage.setBorder(javax.swing.BorderFactory.createTitledBorder("<html><body><h2>" + I18nService.getMessage("language", "") + "</h2></body></html>"));
-        jcbLanguage.setSelectedItem(I18nService.getBundle().getLocale().getLanguage());
         jpAppearance.setBorder(javax.swing.BorderFactory.createTitledBorder("<html><body><h2>" + I18nService.getMessage("appearance", "") + "</h2></body></html>"));
         jbOK.setText("<html><body><h2>" + I18nService.getMessage("ok", "") + "</h2></body></html>");
         jbCancel.setText("<html><body><h2>" + I18nService.getMessage("cancel", "") + "</h2></body></html>");
         //</editor-fold>
 
+        jcbLanguage.setSelectedItem(I18nService.getBundle().getLocale().getLanguage());
+        jcbAppearance.setSelectedItem(LnFService.getLnF().getKey());
+
         this.setVisible(true);
+    }
+
+    @Override
+    public void enableView() {
+        // Do nothing
+    }
+
+    @Override
+    public void disableView() {
+        // Do nothing
     }
 
     @Override
     public String getSelectedLanguage() {
         return (String) jcbLanguage.getSelectedItem();
+    }
+
+    @Override
+    public String getSelectedLnF() {
+        return (String) jcbAppearance.getSelectedItem();
     }
 
     @Override

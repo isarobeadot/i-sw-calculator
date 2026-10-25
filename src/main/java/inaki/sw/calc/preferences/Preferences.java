@@ -8,6 +8,7 @@ package inaki.sw.calc.preferences;
 public class Preferences {
 
     private String language;
+    private String lnf;
 
     /**
      *
@@ -23,6 +24,22 @@ public class Preferences {
      */
     public void setLanguage(String language) {
         this.language = language;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getLnf() {
+        return lnf;
+    }
+
+    /**
+     *
+     * @param lnf
+     */
+    public void setLnf(String lnf) {
+        this.lnf = lnf;
     }
 
 }

@@ -2,10 +2,10 @@ package inaki.sw.calc.view.swing;
 
 import inaki.sw.calc.controller.Controller;
 import inaki.sw.calc.i18n.I18nService;
+import inaki.sw.calc.lnf.LnFService;
 import inaki.sw.calc.view.IMainView;
 import java.text.DecimalFormatSymbols;
 import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
 
 /**
  *
@@ -73,20 +73,23 @@ public class MainView extends javax.swing.JFrame implements IMainView {
         jtfTop.setEditable(false);
         jtfTop.setBackground(new java.awt.Color(255, 255, 255));
         jtfTop.setFont(new java.awt.Font("sansserif", 1, 15)); // NOI18N
+        jtfTop.setForeground(LnFService.getLnF().getColorTxtDark());
         jtfTop.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jtfTop.setFocusable(false);
         jtfTop.setPreferredSize(new java.awt.Dimension(64, 40));
 
         jtfOp.setEditable(false);
-        jtfOp.setBackground(new java.awt.Color(170, 255, 170));
+        jtfOp.setBackground(LnFService.getLnF().getColorMainLight());
         jtfOp.setColumns(1);
         jtfOp.setFont(new java.awt.Font("sansserif", 1, 15)); // NOI18N
+        jtfOp.setForeground(LnFService.getLnF().getColorTxtDark());
         jtfOp.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jtfOp.setFocusable(false);
 
         jtfMain.setEditable(false);
         jtfMain.setBackground(new java.awt.Color(255, 255, 255));
         jtfMain.setFont(new java.awt.Font("sansserif", 1, 15)); // NOI18N
+        jtfMain.setForeground(LnFService.getLnF().getColorTxtDark());
         jtfMain.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jtfMain.setFocusable(false);
         jtfMain.setPreferredSize(new java.awt.Dimension(64, 40));
@@ -119,151 +122,162 @@ public class MainView extends javax.swing.JFrame implements IMainView {
 
         jpMain.setLayout(new java.awt.GridLayout(4, 5, 1, 1));
 
-        jb7.setBackground(new java.awt.Color(0, 136, 0));
-        jb7.setForeground(new java.awt.Color(255, 255, 255));
+        jb7.setBackground(LnFService.getLnF().getColorMainDark());
+        jb7.setForeground(LnFService.getLnF().getColorTxtLight());
         jb7.setText("<html><body><h1>7</h1></body></html>");
         jb7.setBorderPainted(false);
         jb7.setFocusable(false);
         jpMain.add(jb7);
 
-        jb8.setBackground(new java.awt.Color(0, 136, 0));
-        jb8.setForeground(new java.awt.Color(255, 255, 255));
+        jb8.setBackground(LnFService.getLnF().getColorMainDark());
+        jb8.setForeground(LnFService.getLnF().getColorTxtLight());
         jb8.setText("<html><body><h1>8</h1></body></html>");
         jb8.setBorderPainted(false);
         jb8.setFocusable(false);
         jpMain.add(jb8);
 
-        jb9.setBackground(new java.awt.Color(0, 136, 0));
-        jb9.setForeground(new java.awt.Color(255, 255, 255));
+        jb9.setBackground(LnFService.getLnF().getColorMainDark());
+        jb9.setForeground(LnFService.getLnF().getColorTxtLight());
         jb9.setText("<html><body><h1>9</h1></body></html>");
         jb9.setFocusable(false);
         jpMain.add(jb9);
 
-        jbPow.setBackground(new java.awt.Color(170, 255, 170));
+        jbPow.setBackground(LnFService.getLnF().getColorMainLight());
+        jbPow.setForeground(LnFService.getLnF().getColorTxtDark());
         jbPow.setText("<html><body><h1>X<sup>y</sup></h1></body></html>");
         jbPow.setBorderPainted(false);
         jbPow.setFocusable(false);
         jpMain.add(jbPow);
 
-        jbPlusMinus.setBackground(new java.awt.Color(170, 255, 170));
+        jbPlusMinus.setBackground(LnFService.getLnF().getColorMainLight());
+        jbPlusMinus.setForeground(LnFService.getLnF().getColorTxtDark());
         jbPlusMinus.setText("<html><body><h1>+/-</h1></body></html>");
         jbPlusMinus.setBorderPainted(false);
         jbPlusMinus.setFocusable(false);
         jpMain.add(jbPlusMinus);
 
-        jb4.setBackground(new java.awt.Color(0, 136, 0));
-        jb4.setForeground(new java.awt.Color(255, 255, 255));
+        jb4.setBackground(LnFService.getLnF().getColorMainDark());
+        jb4.setForeground(LnFService.getLnF().getColorTxtLight());
         jb4.setText("<html><body><h1>4</h1></body></html>");
         jb4.setBorderPainted(false);
         jb4.setFocusable(false);
         jpMain.add(jb4);
 
-        jb5.setBackground(new java.awt.Color(0, 136, 0));
-        jb5.setForeground(new java.awt.Color(255, 255, 255));
+        jb5.setBackground(LnFService.getLnF().getColorMainDark());
+        jb5.setForeground(LnFService.getLnF().getColorTxtLight());
         jb5.setText("<html><body><h1>5</h1></body></html>");
         jb5.setBorderPainted(false);
         jb5.setFocusable(false);
         jpMain.add(jb5);
 
-        jb6.setBackground(new java.awt.Color(0, 136, 0));
-        jb6.setForeground(new java.awt.Color(255, 255, 255));
+        jb6.setBackground(LnFService.getLnF().getColorMainDark());
+        jb6.setForeground(LnFService.getLnF().getColorTxtLight());
         jb6.setText("<html><body><h1>6</h1></body></html>");
         jb6.setBorderPainted(false);
         jb6.setFocusable(false);
         jpMain.add(jb6);
 
-        jbMultiply.setBackground(new java.awt.Color(170, 255, 170));
+        jbMultiply.setBackground(LnFService.getLnF().getColorMainLight());
+        jbMultiply.setForeground(LnFService.getLnF().getColorTxtDark());
         jbMultiply.setText("<html><body><h1>&times;</h1></body></html>");
         jbMultiply.setBorderPainted(false);
         jbMultiply.setFocusable(false);
         jpMain.add(jbMultiply);
 
-        jbDivide.setBackground(new java.awt.Color(170, 255, 170));
+        jbDivide.setBackground(LnFService.getLnF().getColorMainLight());
+        jbDivide.setForeground(LnFService.getLnF().getColorTxtDark());
         jbDivide.setText("<html><body><h1>&divide;</h1></body></html>");
         jbDivide.setBorderPainted(false);
         jbDivide.setFocusable(false);
         jpMain.add(jbDivide);
 
-        jb1.setBackground(new java.awt.Color(0, 136, 0));
-        jb1.setForeground(new java.awt.Color(255, 255, 255));
+        jb1.setBackground(LnFService.getLnF().getColorMainDark());
+        jb1.setForeground(LnFService.getLnF().getColorTxtLight());
         jb1.setText("<html><body><h1>1</h1></body></html>");
         jb1.setBorderPainted(false);
         jb1.setFocusable(false);
         jpMain.add(jb1);
 
-        jb2.setBackground(new java.awt.Color(0, 136, 0));
-        jb2.setForeground(new java.awt.Color(255, 255, 255));
+        jb2.setBackground(LnFService.getLnF().getColorMainDark());
+        jb2.setForeground(LnFService.getLnF().getColorTxtLight());
         jb2.setText("<html><body><h1>2</h1></body></html>");
         jb2.setBorderPainted(false);
         jb2.setFocusable(false);
         jpMain.add(jb2);
 
-        jb3.setBackground(new java.awt.Color(0, 136, 0));
-        jb3.setForeground(new java.awt.Color(255, 255, 255));
+        jb3.setBackground(LnFService.getLnF().getColorMainDark());
+        jb3.setForeground(LnFService.getLnF().getColorTxtLight());
         jb3.setText("<html><body><h1>3</h1></body></html>");
         jb3.setBorderPainted(false);
         jb3.setFocusable(false);
         jpMain.add(jb3);
 
-        jbAdd.setBackground(new java.awt.Color(170, 255, 170));
+        jbAdd.setBackground(LnFService.getLnF().getColorMainLight());
+        jbAdd.setForeground(LnFService.getLnF().getColorTxtDark());
         jbAdd.setText("<html><body><h1>+</h1></body></html>");
         jbAdd.setBorderPainted(false);
         jbAdd.setFocusable(false);
         jpMain.add(jbAdd);
 
-        jbSubstract.setBackground(new java.awt.Color(170, 255, 170));
+        jbSubstract.setBackground(LnFService.getLnF().getColorMainLight());
+        jbSubstract.setForeground(LnFService.getLnF().getColorTxtDark());
         jbSubstract.setText("<html><body><h1>-</h1></body></html>");
         jbSubstract.setBorderPainted(false);
         jbSubstract.setFocusable(false);
         jpMain.add(jbSubstract);
 
-        jbEmpty.setBackground(new java.awt.Color(0, 136, 0));
-        jbEmpty.setForeground(new java.awt.Color(255, 255, 255));
+        jbEmpty.setBackground(LnFService.getLnF().getColorMainDark());
+        jbEmpty.setForeground(LnFService.getLnF().getColorTxtLight());
         jbEmpty.setBorderPainted(false);
         jbEmpty.setFocusable(false);
         jpMain.add(jbEmpty);
 
-        jb0.setBackground(new java.awt.Color(0, 136, 0));
-        jb0.setForeground(new java.awt.Color(255, 255, 255));
+        jb0.setBackground(LnFService.getLnF().getColorMainDark());
+        jb0.setForeground(LnFService.getLnF().getColorTxtLight());
         jb0.setText("<html><body><h1>0</h1></body></html>");
         jb0.setBorderPainted(false);
         jb0.setFocusable(false);
         jpMain.add(jb0);
 
-        jbDot.setBackground(new java.awt.Color(0, 136, 0));
-        jbDot.setForeground(new java.awt.Color(255, 255, 255));
+        jbDot.setBackground(LnFService.getLnF().getColorMainDark());
+        jbDot.setForeground(LnFService.getLnF().getColorTxtLight());
         jbDot.setText("<html><body><h1>.</h1></body></html>");
         jbDot.setBorderPainted(false);
         jbDot.setFocusable(false);
         jpMain.add(jbDot);
 
-        jbBackSpace.setBackground(new java.awt.Color(170, 255, 170));
+        jbBackSpace.setBackground(LnFService.getLnF().getColorMainLight());
+        jbBackSpace.setForeground(LnFService.getLnF().getColorTxtDark());
         jbBackSpace.setText("<html><body><h1>&larr;</h1></body></html>");
         jbBackSpace.setBorderPainted(false);
         jbBackSpace.setFocusable(false);
         jpMain.add(jbBackSpace);
 
-        jbEqual.setBackground(new java.awt.Color(170, 255, 170));
+        jbEqual.setBackground(LnFService.getLnF().getColorMainLight());
+        jbEqual.setForeground(LnFService.getLnF().getColorTxtDark());
         jbEqual.setText("<html><body><h1>=</h1></body></html>");
         jbEqual.setBorderPainted(false);
         jbEqual.setFocusable(false);
         jpMain.add(jbEqual);
 
-        jpBottom.setBackground(new java.awt.Color(0, 136, 0));
+        jpBottom.setBackground(LnFService.getLnF().getColorMainDark());
 
-        jlVersion.setBackground(new java.awt.Color(0, 136, 0));
-        jlVersion.setForeground(new java.awt.Color(255, 255, 255));
+        jlVersion.setBackground(LnFService.getLnF().getColorMainDark());
+        jlVersion.setForeground(LnFService.getLnF().getColorTxtLight());
         jlVersion.setText("v");
 
-        jbQuit.setBackground(new java.awt.Color(170, 255, 170));
+        jbQuit.setBackground(LnFService.getLnF().getColorMainLight());
+        jbQuit.setForeground(LnFService.getLnF().getColorTxtDark());
         jbQuit.setText("<html><body><h2>Quit</h2></body></html>");
         jbQuit.setBorderPainted(false);
 
-        jbAns.setBackground(new java.awt.Color(170, 255, 170));
+        jbAns.setBackground(LnFService.getLnF().getColorMainLight());
+        jbAns.setForeground(LnFService.getLnF().getColorTxtDark());
         jbAns.setText("<html><body><h2>Ans</h2></body></html>");
         jbAns.setBorderPainted(false);
 
-        jbClear.setBackground(new java.awt.Color(170, 255, 170));
+        jbClear.setBackground(LnFService.getLnF().getColorMainLight());
+        jbClear.setForeground(LnFService.getLnF().getColorTxtDark());
         jbClear.setText("<html><body><h2>Clear</h2></body></html>");
         jbClear.setBorderPainted(false);
 
@@ -390,18 +404,9 @@ public class MainView extends javax.swing.JFrame implements IMainView {
     @Override
     public void startView() {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code ">
-        try {
-            UIManager.setLookAndFeel(new com.formdev.flatlaf.FlatLightLaf());
-            // https://www.formdev.com/flatlaf/customizing/
-            UIManager.put("Button.arc", 20); // Rounded buttons
-            UIManager.put("Component.arrowType", "triangle");
-            SwingUtilities.updateComponentTreeUI(this);
-            this.repaint();
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            // empty
-        } finally {
-            this.pack();
-        }
+        SwingUtilities.updateComponentTreeUI(this);
+        this.repaint();
+        this.pack();
         //</editor-fold>
 
         //<editor-fold defaultstate="collapsed" desc=" Custom I18n ">
@@ -416,6 +421,16 @@ public class MainView extends javax.swing.JFrame implements IMainView {
 
         this.clear();
         this.setVisible(true);
+    }
+
+    @Override
+    public void enableView() {
+        this.setEnabled(true);
+    }
+
+    @Override
+    public void disableView() {
+        this.setEnabled(false);
     }
 
     @Override

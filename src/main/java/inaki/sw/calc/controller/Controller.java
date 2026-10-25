@@ -2,6 +2,8 @@ package inaki.sw.calc.controller;
 
 import inaki.sw.calc.i18n.CustomLocale;
 import inaki.sw.calc.i18n.I18nService;
+import inaki.sw.calc.lnf.LnF;
+import inaki.sw.calc.lnf.LnFService;
 import inaki.sw.calc.preferences.Preferences;
 import inaki.sw.calc.preferences.PreferencesMgr;
 import inaki.sw.calc.view.IMainView;
@@ -45,6 +47,7 @@ import static java.lang.System.exit;
 import java.net.URI;
 import java.util.Locale;
 import static java.util.Locale.ENGLISH;
+import java.util.Objects;
 import java.util.logging.Logger;
 import static java.util.logging.Logger.getLogger;
 import javax.swing.JOptionPane;
@@ -75,6 +78,10 @@ public class Controller implements java.awt.event.ActionListener, java.awt.event
         I18nService.setLocale(Locale.of(
                 this.settings.getLanguage() != null ? this.settings.getLanguage() : CustomLocale.ENGLISH.getKey()
         ));
+
+        LnFService.setLnF(
+                this.settings.getLnf() != null && LnF.getLnFByKey(this.settings.getLnf()) != null ? LnF.getLnFByKey(this.settings.getLnf()) : LnF.GREEN
+        );
 
         this.mv = new MainView();
         this.pv = new PreferencesView((MainView) mv, false);
@@ -196,18 +203,31 @@ public class Controller implements java.awt.event.ActionListener, java.awt.event
                     }
                 }
             }
-            case MV_MENU_PREFERENCES ->
+            case MV_MENU_PREFERENCES -> {
+                mv.disableView();
                 pv.startView();
+            }
             case PV_OK -> {
                 String language = pv.getSelectedLanguage();
                 I18nService.setLocale(Locale.of(language));
                 this.settings.setLanguage(language);
+
+                String lnf = pv.getSelectedLnF();
+                if (!Objects.equals(lnf, this.settings.getLnf())) {
+                    showRestartDialog();
+                }
+                LnFService.setLnF(LnF.getLnFByKey(lnf));
+                this.settings.setLnf(lnf);
+
                 PreferencesMgr.saveSettings(settings);
                 pv.close();
+                mv.enableView();
                 mv.startView();
             }
-            case PV_CANCEL ->
+            case PV_CANCEL -> {
+                mv.enableView();
                 pv.close();
+            }
             default ->
                 LOG.severe(() -> "Action " + action + " not supported.");
         }
@@ -249,5 +269,12 @@ public class Controller implements java.awt.event.ActionListener, java.awt.event
         mv.setTopText(this.ans + "");
         mv.setAnsEnabled(true);
         equalPressed = true;
+    }
+
+    private void showRestartDialog() {
+        JOptionPane.showMessageDialog((PreferencesView) pv,
+                "<html><body><h3>" + I18nService.getMessage("app_restart_required", "") + "</h3></body></html>",
+                I18nService.getMessage("warning", ""),
+                JOptionPane.WARNING_MESSAGE);
     }
 }

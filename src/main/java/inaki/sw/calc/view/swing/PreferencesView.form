@@ -44,8 +44,8 @@
   <SubComponents>
     <Container class="javax.swing.JPanel" name="jpLanguage">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="aa" green="ff" red="aa" type="rgb"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="LnFService.getLnF().getColorMainLight()" type="code"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -77,12 +77,15 @@
       <SubComponents>
         <Component class="javax.swing.JComboBox" name="jcbLanguage">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="LnFService.getLnF().getColorTxtDark()" type="code"/>
+            </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="languageModel" type="code"/>
             </Property>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="renderer" type="javax.swing.ListCellRenderer" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new CustomLocaleCellRenderer()" type="code"/>
+              <Connection code="new CustomComboCellRenderer()" type="code"/>
             </Property>
           </Properties>
           <AuxValues>
@@ -93,8 +96,8 @@
     </Container>
     <Container class="javax.swing.JPanel" name="jpAppearance">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="aa" green="ff" red="aa" type="rgb"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="LnFService.getLnF().getColorMainLight()" type="code"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -126,10 +129,16 @@
       <SubComponents>
         <Component class="javax.swing.JComboBox" name="jcbAppearance">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="LnFService.getLnF().getColorTxtDark()" type="code"/>
+            </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="appearanceModel" type="code"/>
             </Property>
             <Property name="focusable" type="boolean" value="false"/>
+            <Property name="renderer" type="javax.swing.ListCellRenderer" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new CustomComboCellRenderer()" type="code"/>
+            </Property>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -139,8 +148,8 @@
     </Container>
     <Container class="javax.swing.JPanel" name="jpBottom">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="88" red="0" type="rgb"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="LnFService.getLnF().getColorMainDark()" type="code"/>
         </Property>
       </Properties>
 
@@ -172,8 +181,11 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="jbOK">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="aa" green="ff" red="aa" type="rgb"/>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="LnFService.getLnF().getColorMainLight()" type="code"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="LnFService.getLnF().getColorTxtDark()" type="code"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;body&gt;&lt;h2&gt;OK&lt;/h2&gt;&lt;/body&gt;&lt;/html&gt;"/>
             <Property name="borderPainted" type="boolean" value="false"/>
@@ -181,8 +193,11 @@
         </Component>
         <Component class="javax.swing.JButton" name="jbCancel">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="aa" green="ff" red="aa" type="rgb"/>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="LnFService.getLnF().getColorMainLight()" type="code"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="LnFService.getLnF().getColorTxtDark()" type="code"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;body&gt;&lt;h2&gt;Cancel&lt;/h2&gt;&lt;/body&gt;&lt;/html&gt;"/>
             <Property name="borderPainted" type="boolean" value="false"/>

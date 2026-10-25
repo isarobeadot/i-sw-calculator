@@ -12,6 +12,8 @@ public interface IPreferencesView extends IView {
 
     public String getSelectedLanguage();
 
+    public String getSelectedLnF();
+
     public void close();
 
 }

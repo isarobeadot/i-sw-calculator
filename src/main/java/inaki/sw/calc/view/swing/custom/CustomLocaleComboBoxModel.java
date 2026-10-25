@@ -10,7 +10,7 @@ import javax.swing.DefaultComboBoxModel;
  * @author inaki
  * @since 3.1
  */
-public class CustomLocaleComboBoxModel extends DefaultComboBoxModel<String> {
+public class CustomLocaleComboBoxModel extends DefaultComboBoxModel<String> implements ICustomComboBoxModel {
 
     public CustomLocaleComboBoxModel() {
         for (CustomLocale locale : Arrays.stream(CustomLocale.values()).sorted(Comparator.comparing(CustomLocale::getKey))
@@ -23,8 +23,9 @@ public class CustomLocaleComboBoxModel extends DefaultComboBoxModel<String> {
      * Returns the HTML text to display an element, given its key
      *
      * @param key
-     * @return 
+     * @return
      */
+    @Override
     public String getDisplayName(String key) {
         for (CustomLocale locale : CustomLocale.values()) {
             if (locale.getKey().equals(key)) {
