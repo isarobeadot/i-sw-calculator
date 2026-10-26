@@ -1,9 +1,9 @@
 @echo off
 setlocal
 
-for /f "delims=" %%i in ('mvn help:evaluate -Dexpression=project.version -q -DforceStdout') do set version=%%i
-
-if "%version%"=="" (
+if not "%~1"=="" (
+    set version=%~1
+) else (
     set /p version=Version: 
 )
 
