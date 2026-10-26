@@ -1,5 +1,7 @@
 #!/bin/sh
 
+mvn clean package -B
+
 version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
 
 rm -f target/calculator-$version.jar
