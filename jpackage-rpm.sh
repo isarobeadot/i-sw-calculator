@@ -13,7 +13,7 @@ rm -rf target/maven-archiver
 rm -rf target/maven-status
 rm -rf target/test-classes
 
-$HOME/java/jdk-21.0.2/bin/jpackage --input target/ \
+jpackage --input target/ \
     --name "I-SW Calculator" \
     --vendor "I-SW - I. Software" \
     --main-jar calculator-$version-jar-with-dependencies.jar \
