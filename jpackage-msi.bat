@@ -1,13 +1,15 @@
 @echo off
 setlocal
 
-if not "%~1"=="" (
-    set version=%~1
-) else (
+for /f "tokens=3 delims=<>" %%a in ('findstr /i "<version>" pom.xml') do (
+    set version=%%a
+    goto :found
+)
+:found
+
+if "%version%"=="" (
     set /p version=Version: 
 )
-
-echo Using version: %version%
 
 call mvn clean package -B
 
