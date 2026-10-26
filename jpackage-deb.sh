@@ -23,4 +23,5 @@ jpackage --input target/ \
     --description "Basic calculator, available for Windows, Linux and Android" \
     --linux-package-name isw-calculator \
     --linux-menu-group Utility \
-    --type deb
+    --type deb \
+    --dest target

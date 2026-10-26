@@ -24,4 +24,5 @@ jpackage --input target/ \
     --linux-package-name isw-calculator \
     --linux-menu-group Utility \
     --linux-rpm-license-type MIT \
-    --type rpm
+    --type rpm \
+    --dest target
