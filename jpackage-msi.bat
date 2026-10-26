@@ -24,7 +24,7 @@ jpackage --input target/ ^
     --main-jar calculator-%version%-jar-with-dependencies.jar ^
     --main-class inaki.sw.calc.Calculator ^
     --app-version %version% ^
-    --icon src/main/resources/inaki/sw/calc/icon/isw-calc-512.ico ^
+    --icon ../src/main/resources/inaki/sw/calc/icon/isw-calc-512.ico ^
     --description "Basic calculator, available for Windows, Linux and Android" ^
 	--win-dir-chooser ^
 	--win-menu ^
