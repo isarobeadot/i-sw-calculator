@@ -1,6 +1,13 @@
 @echo off
+setlocal
 
-set /p version=Version: 
+if not "%~1"=="" (
+    set version=%~1
+) else (
+    set /p version=Version: 
+)
+
+call mvn clean package -B
 
 del /q target\calculator-%version%.jar
 rmdir /s /q target\archive-tmp
@@ -26,4 +33,5 @@ jpackage --input target/ ^
 	--win-shortcut-prompt ^
     --type msi
 
-pause
+if "%CI%"=="" pause
+endlocal

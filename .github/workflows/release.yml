@@ -79,6 +79,11 @@ jobs:
         shell: cmd
         run: |
           # Llama al script batch nativo de Windows
+          for /f "tokens=3 delims=<>" %%a in ('findstr /i "<version>" pom.xml') do (
+              set PROJECT_VERSION=%%a
+              goto :found
+          )
+          :found
           call ${{ matrix.script-path }}
 
       # --- SUBIDA AUTOMÁTICA A GITHUB RELEASE ---
