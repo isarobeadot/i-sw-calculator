@@ -79,7 +79,6 @@ jobs:
         shell: cmd
         run: |
           # Llama al script batch nativo de Windows
-          for /f "delims=" %%v in ('mvn help:evaluate -Dexpression=project.version -q -DforceStdout') do set PROJECT_VERSION=%%v
           call ${{ matrix.script-path }}
 
       # --- SUBIDA AUTOMÁTICA A GITHUB RELEASE ---

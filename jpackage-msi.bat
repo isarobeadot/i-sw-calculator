@@ -1,11 +1,13 @@
 @echo off
 setlocal
 
-if not "%~1"=="" (
-    set version=%~1
-) else (
+for /f "delims=" %%i in ('mvn help:evaluate -Dexpression=project.version -q -DforceStdout') do set version=%%i
+
+if "%version%"=="" (
     set /p version=Version: 
 )
+
+echo Using version: %version%
 
 call mvn clean package -B
 
