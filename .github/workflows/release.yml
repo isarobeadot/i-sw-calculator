@@ -76,6 +76,7 @@ jobs:
       # --- EJECUCIÓN DE SCRIPT EN WINDOWS (.msi) ---
       - name: Run jpackage Windows script
         if: runner.os == 'Windows'
+        shell: cmd
         run: |
           # Llama al script batch nativo de Windows
           call ${{ matrix.script-path }}
