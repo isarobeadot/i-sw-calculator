@@ -3,7 +3,7 @@ name: Build and Release Installers
 on:
   push:
     tags:
-      # Coincide con patrones como 1.0, 1.0.1, 2.0, etc. (evitando que requiera la 'v')
+      # Coincide con patrones como 1.0, 1.0.1, 2.0, etc.
       - '[0-9]+.[0-9]+*'
 
 jobs:
@@ -19,19 +19,19 @@ jobs:
           - os: ubuntu-latest
             format: deb
             script-path: ./jpackage-deb.sh
-            artifact-glob: target/*.deb
+            artifact-path: target/*.deb
             
           # 2. Formato RPM (Ubuntu/Linux con herramientas rpm)
           - os: ubuntu-latest
             format: rpm
             script-path: ./jpackage-rpm.sh
-            artifact-glob: target/*.rpm
+            artifact-path: target/*.rpm
             
           # 3. Formato MSI (Windows)
           - os: windows-latest
             format: msi
             script-path: ./jpackage-msi.bat
-            artifact-glob: target/*.msi
+            artifact-path: target/*.msi
 
     steps:
       - name: Checkout repository
@@ -81,11 +81,30 @@ jobs:
           # Llama al script batch nativo de Windows
           call ${{ matrix.script-path }}
 
+      # 1. Subimos cada instalador como un artefacto temporal de GitHub
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: installer-${{ matrix.format }}
+          path: ${{ matrix.artifact-path }}
+          if-no-files-found: error
+
+  # 2. Job unificado que junta todo y crea la Release de GitHub una sola vez
+  publish-release:
+    needs: build-installers
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download all workflow artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: all-installers
+          merge-multiple: true
+
       # --- SUBIDA AUTOMÁTICA A GITHUB RELEASE ---
-      - name: Upload Release Assets
+      - name: Create GitHub Release and Upload Assets
         uses: softprops/action-gh-release@v2
         with:
-          files: ${{ matrix.artifact-glob }}
+          files: all-installers/*
           # Opcional: crea la release automáticamente como borrador o la marca como latest
           # draft: false
           # prerelease: false
