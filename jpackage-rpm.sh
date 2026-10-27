@@ -13,7 +13,14 @@ rm -rf target/maven-archiver
 rm -rf target/maven-status
 rm -rf target/test-classes
 
-jpackage --input target/ \
+if [ "$CI" = "true" ]; then
+    JPACKAGE_CMD="jpackage"
+else
+    # Ruta en tu máquina local
+    JPACKAGE_CMD="$HOME/java/jdk-21.0.2/bin/jpackage"
+fi
+
+"$JPACKAGE_CMD" --input target/ \
     --name "I-SW Calculator" \
     --vendor "I-SW - I. Software" \
     --main-jar calculator-$version-jar-with-dependencies.jar \

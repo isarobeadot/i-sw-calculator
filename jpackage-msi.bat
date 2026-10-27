@@ -35,7 +35,7 @@ jpackage --input target/ ^
 	--win-menu-group I-SW ^
 	--win-shortcut ^
 	--win-shortcut-prompt ^
-    --type msi^
+    --type msi ^
     --dest target
 
 if "%CI%"=="" pause
