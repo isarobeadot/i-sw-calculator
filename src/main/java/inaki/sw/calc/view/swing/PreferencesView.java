@@ -49,6 +49,7 @@ public class PreferencesView extends javax.swing.JDialog implements IPreferences
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("ISW Calculator - Preferences");
+        setResizable(false);
 
         jpLanguage.setBackground(LnFService.getLnF().getColorMainLight());
         jpLanguage.setBorder(javax.swing.BorderFactory.createTitledBorder("<html><body><h2>Language</h2></body></html>"));

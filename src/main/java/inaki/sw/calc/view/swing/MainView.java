@@ -69,6 +69,7 @@ public class MainView extends javax.swing.JFrame implements IMainView {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle(I18nService.getMessage("app_name", ""));
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/inaki/sw/calc/icon/isw-calc-96.png")).getImage());
+        setResizable(false);
 
         jtfTop.setEditable(false);
         jtfTop.setBackground(new java.awt.Color(255, 255, 255));
