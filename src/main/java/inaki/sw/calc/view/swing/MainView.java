@@ -425,16 +425,6 @@ public class MainView extends javax.swing.JFrame implements IMainView {
     }
 
     @Override
-    public void enableView() {
-        this.setEnabled(true);
-    }
-
-    @Override
-    public void disableView() {
-        this.setEnabled(false);
-    }
-
-    @Override
     public void clear() {
         jtfTop.setText("");
         jtfOp.setText("");

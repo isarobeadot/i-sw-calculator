@@ -13,8 +13,4 @@ public interface IView {
 
     public void startView();
 
-    public void enableView();
-
-    public void disableView();
-
 }

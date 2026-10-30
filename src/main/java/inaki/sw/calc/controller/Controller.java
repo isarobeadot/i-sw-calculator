@@ -204,7 +204,6 @@ public class Controller implements java.awt.event.ActionListener, java.awt.event
                 }
             }
             case MV_MENU_PREFERENCES -> {
-                mv.disableView();
                 pv.startView();
             }
             case PV_OK -> {
@@ -221,11 +220,9 @@ public class Controller implements java.awt.event.ActionListener, java.awt.event
 
                 PreferencesMgr.saveSettings(settings);
                 pv.close();
-                mv.enableView();
                 mv.startView();
             }
             case PV_CANCEL -> {
-                mv.enableView();
                 pv.close();
             }
             default ->
