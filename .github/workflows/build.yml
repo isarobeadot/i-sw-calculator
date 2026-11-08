@@ -54,4 +54,4 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=isarobeadot_i-sw-calculator_49b10fba-c847-48a6-8a7a-1dd59edeb0f8 -Dsonar.projectName='i-sw-calculator'
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=isarobeadot_i-sw-calculator_b877b774-22c4-46f0-8da4-e67b1e65b2f2 -Dsonar.projectName='i-sw-calculator'
