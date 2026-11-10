@@ -87,17 +87,18 @@
             <version>3.7.2</version>
             <type>jar</type>
         </dependency>
-        <!-- Source: https://mvnrepository.com/artifact/tools.jackson.core/jackson-databind -->
+        <!-- https://mvnrepository.com/artifact/tools.jackson.core/jackson-databind -->
         <dependency>
             <groupId>tools.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>3.2.4</version>
         </dependency>
 
+        <!-- https://github.com/isarobeadot/i-sw-lib/packages/3372914 -->
         <dependency>
             <groupId>inaki.sw</groupId>
             <artifactId>lib</artifactId>
-            <version>1.0</version>
+            <version>1.1</version>
         </dependency>
     </dependencies>
 </project>
